@@ -1,0 +1,88 @@
+// variables
+@import "../variables";
+
+.sections {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   margin: 60px 0;
+   gap: 3%;
+   .section {
+      box-shadow: 0px 0px 20px rgb(180, 180, 180);
+      cursor: pointer;
+      margin: 20px 0;
+      border: 1px solid $White-bg-color-grey;
+      flex: 30%;
+      max-width: 30%;
+      text-align: center;
+      border-radius: 20px;
+      background: #f5edd6;
+      position: relative;
+      padding-bottom: 10px;
+      .title {
+         padding: 13px 0;
+         font-size: 22px;
+         font-weight: 600;
+         font-family: $Montserat;
+         background: $WhiteT-bg-color-black;
+         color: $WhiteT-text-color-white;
+         border-top-right-radius: 20px;
+         border-top-left-radius: 20px;
+      }
+      .details {
+         border-bottom-right-radius: 20px;
+         border-bottom-left-radius: 20px;
+         padding: 15px 0 5px 0;
+         height: 150px;
+         overflow-y: auto;
+         background: #f5edd6;
+         &::-webkit-scrollbar {
+            width: 5px;
+         }
+
+         &::-webkit-scrollbar-track {
+            background: none; /* Цвет фона трека */
+         }
+
+         &::-webkit-scrollbar-thumb {
+            background: #000000; /* Цвет ползунка */
+            border-radius: 25px;
+         }
+
+         &::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Цвет ползунка при наведении */
+         }
+         li {
+            padding: 3px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            font-family: $Montserat;
+            text-align: left;
+            &:before {
+               content: "-";
+               padding-right: 10px;
+            }
+         }
+      }
+      .play {
+         background: rgb(37, 37, 37);
+         padding: 10px;
+         position: absolute;
+         right: 0.9vw;
+         bottom: 0.9vw;
+         opacity: 0;
+         border-radius: 100%;
+         transition: all 0.4s;
+         button {
+            background: none;
+         }
+      }
+      &:hover {
+         .play {
+            transition: all 0.4s;
+            opacity: 0.7;
+         }
+      }
+   }
+}
