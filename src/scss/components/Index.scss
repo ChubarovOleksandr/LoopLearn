@@ -17,7 +17,7 @@
       max-width: 30%;
       text-align: center;
       border-radius: 20px;
-      background: #f5edd6;
+      background: $paper;
       position: relative;
       padding-bottom: 10px;
       .title {
@@ -36,7 +36,7 @@
          padding: 15px 0 5px 0;
          height: 150px;
          overflow-y: auto;
-         background: #f5edd6;
+         background: $paper;
          &::-webkit-scrollbar {
             width: 5px;
          }

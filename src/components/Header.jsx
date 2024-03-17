@@ -1,15 +1,16 @@
 import '../scss/components/Header.scss';
 import blackCube from '../assets/img/black-cube.png';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
    return (
       <header className="header">
          <div className="wrapper">
-            <div><img src={blackCube} alt="logo" className="header-logo" /></div>
+            <NavLink to="/"><img src={blackCube} alt="logo" className="header-logo" /></NavLink>
             <div>
-               <button className="header-button">
+               <NavLink to="create" className="header-button">
                   Создать раздел
-               </button>
+               </NavLink>
             </div>
          </div >
       </header>

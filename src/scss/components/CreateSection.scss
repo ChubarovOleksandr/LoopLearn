@@ -1,0 +1,128 @@
+// variables
+@import "../variables";
+
+main.createSection {
+   padding: 80px 0 0 0;
+   form {
+      box-shadow: 0px 0px 20px rgb(180, 180, 180);
+      border-radius: 30px;
+      padding-bottom: 100px;
+      background: $paper;
+      position: relative;
+      h1 {
+         text-align: center;
+         background: $WhiteT-bg-color-black;
+         color: $WhiteT-text-color-white;
+         padding: 25px 0;
+         font-size: 32px;
+         font-family: $Nunito;
+         font-weight: 600;
+         border-top-right-radius: 30px;
+         border-top-left-radius: 30px;
+      }
+      .form__body {
+         padding: 2% 1.5%;
+         text-align: center;
+         input,
+         textarea {
+            display: block;
+            margin: 15px 0;
+            color: $WhiteT-text-color-black;
+            padding: 10px 10px 10px 20px;
+            font-size: 20px;
+            border: 1px solid $paper;
+            border-radius: 10px;
+            opacity: 0.8;
+            font-family: $Nunito;
+            &:focus {
+               transition: opacity .4s;
+               opacity: 1;
+            }
+         }
+         .dedicated {
+            position: relative;
+            width: 100%;
+            display: block;
+            &:before,
+            &:after {
+               content: "";
+               position: absolute;
+               top: 50%;
+               height: 1px;
+               width: 10%;
+               border-radius: 5px;
+               transform: translate(0, -50%);
+               background: $WhiteT-text-color-black;
+            }
+            &:before {
+               left: 30%;
+            }
+            &:after {
+               right: 30%;
+            }
+         }
+         .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            input {
+               width: 500px;
+               height: 45px;
+               transition: all 0.4s;
+            }
+         }
+         span {
+            display: block;
+            font-family: $Nunito;
+            font-weight: 500;
+            font-size: 20px;
+            position: relative;
+            margin: 15px 0;
+         }
+         .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            textarea {
+               width: 450px;
+               min-height: 45px;
+               max-height: 500px;
+               resize: none;
+               height: auto;
+               overflow-y: hidden;
+            }
+            button {
+               border-radius: 5px;
+               width: 45px;
+               height: 45px;
+               background: $White-bg-color-add;
+               transition: all 0.4s;
+               font-size: 24px;
+               font-family: $Poppins;
+               font-weight: 400;
+               color: $WhiteT-text-color-white;
+               &:hover {
+                  background: $White-bg-color-add-hover;
+                  transition: all 0.4s;
+               }
+            }
+         }
+         .save {
+            position: absolute;
+            box-shadow: 0px 0px 25px rgb(201, 195, 195);
+            padding: 15px 25px;
+            bottom: 25px;
+            left: 50%;
+            background: $WhiteT-bg-color-black;
+            color: $WhiteT-text-color-white;
+            border-radius: 20px;
+            font-size: 24px;
+            font-family: $Montserat;
+            font-weight: 400;
+            transform: translate(-50%, 0%);
+         }
+      }
+   }
+}

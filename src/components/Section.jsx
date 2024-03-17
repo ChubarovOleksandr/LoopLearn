@@ -1,5 +1,5 @@
 import play from '../assets/img/play.png';
-import '../scss/components/Main.scss'
+import '../scss/components/Index.scss'
 
 const Section = () => {
    return (
