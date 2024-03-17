@@ -35,7 +35,7 @@ main.createSection {
             opacity: 0.8;
             font-family: $Nunito;
             &:focus {
-               transition: opacity .4s;
+               transition: opacity 0.4s;
                opacity: 1;
             }
          }
@@ -106,6 +106,37 @@ main.createSection {
                &:hover {
                   background: $White-bg-color-add-hover;
                   transition: all 0.4s;
+               }
+            }
+         }
+         .question-list {
+            max-width: 500px;
+            margin: 0 auto;
+            li {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               textarea {
+                  width: 450px;
+                  resize: none;
+                  min-height: 45px;
+                  max-height: 500px;
+                  margin: 5px 0;
+               }
+               button {
+                  height: 45px;
+                  width: 45px;
+                  background: $White-bg-color-remove;
+                  transition: all 0.4s;
+                  border-radius: 5px;
+                  font-size: 24px;
+                  font-family: "Poppins", sans-serif;
+                  font-weight: 400;
+                  color: rgb(255, 255, 255);
+                  &:hover {
+                     background: $White-bg-color-remove-hover;
+                     transition: all 0.4s;
+                  }
                }
             }
          }

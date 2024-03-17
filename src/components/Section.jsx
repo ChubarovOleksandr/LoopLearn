@@ -1,17 +1,16 @@
+/* eslint-disable react/prop-types */
 import play from '../assets/img/play.png';
 import '../scss/components/Index.scss'
 
-const Section = () => {
+const Section = ({ item }) => {
    return (
       <div className="section">
-         <div className="title">IT</div>
+         <div className="title">{item.name}</div>
          <div className="details">
             <ul>
-               <li>Почему так</li>
-               <li>а никак</li>
-               <li>иначе?</li>
-               <li>может,</li>
-               <li>это не спроста</li>
+               {item.questions.map((question, index) => {
+                  return <li key={index}>{question.question}</li>
+               })}
             </ul>
          </div>
          <div className="play"><button><img src={play} alt="play" /></button></div>
