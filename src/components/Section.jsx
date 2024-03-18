@@ -3,6 +3,7 @@ import play from '../assets/img/play.png';
 import '../scss/components/Index.scss'
 
 const Section = ({ item }) => {
+
    return (
       <div className="section">
          <div className="title">{item.name}</div>
