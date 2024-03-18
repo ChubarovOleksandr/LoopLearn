@@ -1,6 +1,29 @@
 // variables
 @import "../variables";
 
+body {
+   &::-webkit-scrollbar {
+      width: 7px;
+      height: 100%;
+      &:hover {
+         cursor: pointer;
+      }
+   }
+
+   &::-webkit-scrollbar-track {
+      background: none;
+   }
+
+   &::-webkit-scrollbar-thumb {
+      background: #696969;
+      border-radius: 25px;
+   }
+
+   &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+   }
+}
+
 main.createSection {
    padding: 80px 0 50px 0;
    form {

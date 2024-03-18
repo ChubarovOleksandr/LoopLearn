@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-   doneSections: [{
-      id: 0,
-      name: "Айти",
-      questions: [
-         { name: 'Айти', question: 'Что такое массив?', id: 0, answer: 'Массив - это тип данных в js' },
-         { name: 'Айти', question: 'Что такое объект?', id: 1, answer: 'Это тоже тип данных в js' },
-         { name: 'Айти', question: 'Какие ещё типы данных существуют?' },
-      ],
-   }],
+   doneSections: [],
    creatingSectionQuestion: [],
    autoSavedName: '',
    autoSavedQuestion: '',

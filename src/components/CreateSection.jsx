@@ -19,6 +19,7 @@ const CreateSection = () => {
    const saveSection = () => {
       if (nameRef.current.value != '' && questions.length != 0) {
          dispatch(addSection({ name: nameRef.current.value, questions }));
+         dispatch(autoSaveText({ autoSavedName: '', autoSavedQuestion: '' }));
          questions.forEach(item => dispatch(removeSectionQuestion(item)));
          navigate('/');
       } else {
@@ -28,7 +29,7 @@ const CreateSection = () => {
 
    const addQuestion = () => {
       if (textareaRef.current.value != '') {
-         dispatch(saveSectionQuestion({ name: nameRef.current.value, question: textareaRef.current.value }));
+         dispatch(saveSectionQuestion({ question: textareaRef.current.value }));
          dispatch(autoSaveText({ autoSavedName: nameRef.current.value, autoSavedQuestion: '' }));
          autosize.update(textareaRef.current);
       } else {

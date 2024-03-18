@@ -1,8 +1,17 @@
 /* eslint-disable react/prop-types */
+import { NavLink } from 'react-router-dom';
 import play from '../assets/img/play.png';
 import '../scss/components/Index.scss'
+import { addQuestions } from '../redux/slice/quitzSlice';
+import { useDispatch } from 'react-redux';
 
 const Section = ({ item }) => {
+
+   const dispatch = useDispatch();
+
+   const onPlayHandler = () => {
+      dispatch(addQuestions(item));
+   }
 
    return (
       <div className="section">
@@ -14,7 +23,9 @@ const Section = ({ item }) => {
                })}
             </ul>
          </div>
-         <div className="play"><button><img src={play} alt="play" /></button></div>
+         <NavLink to='quitz' onClick={() => onPlayHandler()} className="play">
+            <img src={play} alt="play" />
+         </NavLink>
       </div>
    );
 }
