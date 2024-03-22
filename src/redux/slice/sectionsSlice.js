@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
    doneSections: [],
    creatingSectionQuestion: [],
+   changingSectionId: null,
    autoSavedName: '',
    autoSavedQuestion: '',
 };
@@ -48,8 +49,19 @@ export const sectionSlice = createSlice({
       },
       addSection(state, action) {
          state.doneSections.push({ ...action.payload, id: state.doneSections.length });
+         state.changingSection = [];
+         state.autoSavedName = '';
+         state.autoSavedQuestion = '';
+         state.creatingSectionQuestion = [];
+      },
+      removeSection(state, action) {
+         state.doneSections.map((item, index) => {
+            if(item.id === action.payload.id){
+               state.doneSections.splice(index, 1);
+            }
+         })
       },
    }
 })
 
-export const { addSection, saveSectionQuestion, changeSectionQuestion, removeSectionQuestion, autoSaveText, addAnswer } = sectionSlice.actions;
+export const { addSection, saveSectionQuestion, changeSectionQuestion, removeSectionQuestion, autoSaveText, addAnswer, removeSection } = sectionSlice.actions;

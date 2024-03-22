@@ -3,10 +3,13 @@ import '../scss/components/CreateSection.scss'
 import { useEffect, useRef } from 'react';
 import Question from './Question';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSection, saveSectionQuestion, autoSaveText } from '../redux/slice/sectionsSlice';
+import { addSection, removeSectionQuestion, saveSectionQuestion, autoSaveText } from '../redux/slice/sectionsSlice';
 import { useNavigate } from 'react-router-dom';
 
-const CreateSection = () => {
+const ChangeSection = () => {
+
+   const id = useSelector(state => state.section.changingSectionId);
+   console.log(id);
 
    const textareaRef = useRef();
    const nameRef = useRef();
@@ -14,11 +17,13 @@ const CreateSection = () => {
    const dispatch = useDispatch();
    const initSectionTitle = useSelector(state => state.section.autoSavedName);
    const initSectionQuestion = useSelector(state => state.section.autoSavedQuestion);
-   const questions = useSelector(state => state.section.creatingSectionQuestion);
+   const item = useSelector(state => state.section.creatingSectionQuestion);
 
    const saveSection = () => {
-      if (nameRef.current.value != '' && questions.length != 0) {
-         dispatch(addSection({ name: nameRef.current.value, questions }));
+      if (nameRef.current.value != '' && item.length != 0) {
+         dispatch(addSection({ name: nameRef.current.value, item }));
+         dispatch(autoSaveText({ autoSavedName: '', autoSavedQuestion: '' }));
+         item.forEach(item => dispatch(removeSectionQuestion(item)));
          navigate('/');
       } else {
          alert('Пожалуйста введите название и хотя бы одну задачу');
@@ -48,7 +53,7 @@ const CreateSection = () => {
       <main className='createSection'>
          <div className="wrapper">
             <form onClick={(e) => e.preventDefault()}>
-               <h1>Создание раздела</h1>
+               <h1>Изменение раздела</h1>
                <div className="form__body">
                   <span className='dedicated'>Введите название</span>
                   <div className="name">
@@ -59,11 +64,11 @@ const CreateSection = () => {
                      <textarea value={initSectionQuestion} onChange={() => autoSave()} rows={1} ref={textareaRef} />
                      <button onClick={() => addQuestion()}>+</button>
                   </div>
-                  {questions.length != 0 &&
+                  {item.length != 0 &&
                      <>
                         <span>Отредактируйте или добавьте ответ</span>
                         <ul className="question-list">
-                           {questions.map(item => <Question key={item.id} item={item} />)}
+                        {item.map(item => <Question key={item.id} item={item} />)}
                         </ul>
                      </>
                   }
@@ -75,4 +80,4 @@ const CreateSection = () => {
    );
 }
 
-export default CreateSection;
+export default ChangeSection;

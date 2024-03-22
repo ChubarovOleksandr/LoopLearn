@@ -16,7 +16,7 @@
 
 // styles
 
-main {
+main.quitz {
    min-height: 700px;
    display: flex;
    justify-content: center;
@@ -40,13 +40,27 @@ main {
       .buttons {
          display: flex;
          justify-content: center;
-         button {
+         button, a {
             width: 220px;
             background: none;
             font-family: $Montserat;
             font-size: 18px;
             padding: 20px 20px;
             transition: all .3s;
+         }
+         a {
+            border-radius: 25px;
+            transition: all .4s;
+            font-weight: 400;
+            background: $WhiteT-bg-color-black;
+            border: 2px solid $WhiteT-bg-color-black;
+            color: $WhiteT-text-color-white;
+            &:hover {
+               background: none;
+               border: 2px solid $WhiteT-bg-color-grey;
+               color: $WhiteT-text-color-black;
+               transition: all .6s;
+            }
          }
          .confirm {
             border-right: 1px solid $WhiteT-bg-color-black;

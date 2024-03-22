@@ -1,0 +1,107 @@
+// variables
+@import "../variables";
+
+
+.auth {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 10px 10px 15px $WhiteT-bg-color-white-grey;
+      padding: 40px 20px;
+      border-radius: 25px;
+      .title {
+         font-family: $Montserat;
+         font-size: 46px;
+         margin: 0 0 50px 0;
+      }
+      form {
+         padding: 20px;
+         width: 30dvw;
+         border-radius: 15px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         label {
+            position: relative;
+            width: 90%;
+            button {
+               z-index: 5;
+               position: absolute;
+               top: 50%;
+               left: 1%;
+               transform: translate(0, -50%);
+               background: none;
+               img {
+                  background: none;
+                  width: 30px;
+                  height: 30px;
+                  opacity: 0.8;
+               }
+            }
+            input {
+               width: 100%;
+               padding: 8px 35px;
+            }
+         }
+         input {
+            font-family: $Nunito;
+            font-size: 20px;
+            padding: 8px 0;
+            text-align: center;
+            width: 90%;
+            margin: 10px 0;
+            border-bottom: 2px solid $WhiteT-bg-color-white-grey;
+            opacity: 0.8;
+            transition: all .4s;
+            &:focus {
+               opacity: 1;
+               transition: all .4s;
+               border-bottom: 2px solid $WhiteT-bg-color-grey;
+               &::placeholder {
+                  color: $WhiteT-bg-color-white;
+               }
+            }
+         }
+         .email {
+         }
+         .username {
+         }
+         .password {
+         }
+         .main-button {
+            margin-top: 40px;
+            padding: 15px 40px;
+            border-radius: 25px;
+            background: $WhiteT-bg-color-black;
+            color: $WhiteT-text-color-white;
+            font-size: 18px;
+            font-family: $Montserat;
+            font-weight: 400;
+            transition: all .4s;
+            border: 1px solid $WhiteT-text-color-white;
+         }
+      }
+      .second-button {
+         background: none;
+         font-family: $Montserat;
+         font-size: 18px;
+         color: $WhiteT-text-color-black;
+         font-weight: bold;
+         margin: 20px 0;
+      }
+      .recovery-button {
+         background: none;
+         font-family: $Montserat;
+         font-size: 18px;
+         color: $WhiteT-text-color-black-grey;
+         margin-top: 20px;
+      }
+   }
+}
