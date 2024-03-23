@@ -15,7 +15,7 @@ const LogIn = () => {
          <form action="" onClick={(e) => e.preventDefault()} className="LogInForm">
             <input type="text" className='username' placeholder='Enter your login' />
             <label>
-               <button
+               <button 
                   onClick={()=>setShowPassword(!showPassword)}
                   onMouseEnter={() => setIsIcon(false)}
                   onMouseLeave={() => setIsIcon(true)}
