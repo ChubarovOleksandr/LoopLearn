@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import { NavLink, Navigate } from 'react-router-dom';
-import play from '../assets/img/play.png';
-import '../scss/components/Index.scss'
-import { addQuestions } from '../redux/slice/quitzSlice';
+import play from '../../assets/img/play.png';
+import '../../scss/components/Dashboard.scss'
+import { addQuestions } from '../../redux/slice/quitzSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import more from '../assets/img/ellipsis.png'
-import pencil from '../assets/img/pencil.png'
-import trash from '../assets/img/trash-bin.png'
-import { removeSection } from '../redux/slice/sectionsSlice';
+import more from '../../assets/img/ellipsis.png'
+import pencil from '../../assets/img/pencil.png'
+import trash from '../../assets/img/trash-bin.png'
+import { removeSection, setChangingSectionId } from '../../redux/slice/sectionsSlice';
 
 const Section = ({ item }) => {
 
@@ -30,6 +30,8 @@ const Section = ({ item }) => {
    const onChangeHandler = () => {
       if (creatingSectionQuestion.length != 0 || creatingSectionName != '') {
          setUserConfirm(confirm('Вы начали создавать один отдел, но ещё не сохранили его, недобавленный отдел будет не сохранен. Вы уверенны?'))
+      } else {
+         setUserConfirm(true);
       }
    }
    
@@ -39,16 +41,18 @@ const Section = ({ item }) => {
             setIsOptionsVisible(false);
          }
       }
-
+      
       document.addEventListener('click', toggleIsOpened);
-
+      
       return () => {
          document.removeEventListener('click', toggleIsOpened);
       }
-
+      
    }, [isOptionsVisible])
-
+   
    if(userComfirm){
+      dispatch(setChangingSectionId({id: item.id}))
+      console.log(item.id);
       return <Navigate to='change' />
    }
 

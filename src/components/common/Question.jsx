@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { changeSectionQuestion, removeSectionQuestion, addAnswer } from "../redux/slice/sectionsSlice";
+import { changeSectionQuestion, removeSectionQuestion, addAnswer } from "../../redux/slice/sectionsSlice";
 import { useDispatch } from "react-redux";
 import autosize from "autosize";
-import enterArrow from '../assets/img/enter-arrow.png';
+import enterArrow from '../../assets/img/enter-arrow.png';
 
 /* eslint-disable react/prop-types */
 const Question = ({ item }) => {

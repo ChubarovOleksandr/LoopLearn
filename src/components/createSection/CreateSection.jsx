@@ -1,9 +1,9 @@
 import autosize from 'autosize';
-import '../scss/components/CreateSection.scss'
+import '../../scss/components/CreateSection.scss'
 import { useEffect, useRef } from 'react';
-import Question from './Question';
+import Question from '../common/Question';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSection, saveSectionQuestion, autoSaveText } from '../redux/slice/sectionsSlice';
+import { addSection, saveSectionQuestion, autoSaveText } from '../../redux/slice/sectionsSlice';
 import { useNavigate } from 'react-router-dom';
 
 const CreateSection = () => {

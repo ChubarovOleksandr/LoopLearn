@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom"
 import Layout from "./layouts/Layout"
 import './scss/App.scss';
-import Index from "./components/Index";
-import CreateSection from "./components/CreateSection";
-import Quitz from "./components/Quitz";
-import ChangeSection from "./components/ChangeSection";
-import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
+import Index from "./components/dashboard/Dashboard";
+import CreateSection from "./components/createSection/CreateSection";
+import QuitzPage from "./components/quitz/QuitzPage";
+import ChangeSection from "./components/changeSection/ChangeSection";
+import SignUp from "./components/auth/SignUp";
+import LogIn from "./components/auth/LogIn";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
                <Route index element={<Index />} />
                <Route path="create" element={<CreateSection />} />
                <Route path="change" element={<ChangeSection />} />
-               <Route path="quitz" element={<Quitz />} />
+               <Route path="quitz" element={<QuitzPage />} />
             </Route>
          </Routes>
       </>

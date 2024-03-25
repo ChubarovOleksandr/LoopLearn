@@ -1,17 +1,38 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { setRegisterData } from "../../api/Auth";
 
 const initialState = {
-   userData: []
+   userData: {
+      email: '',
+      username: '',
+      password: '',
+   }
 };
 
-export const quitzSlice = createSlice({
+export const registData = createAsyncThunk(
+   'authSlice/registData',
+   async function (params) {
+      const response = await setRegisterData(params);
+      return response;
+   }
+)
+
+export const authSlice = createSlice({
    name: 'authSlice',
    initialState,
    reducers: {
       setUserData(state, action) {
          state.userData = action.payload;
       },
+   },
+   extraReducers: (builder) => {
+      builder
+         .addCase(registData.pending, () => {
+         })
+         .addCase(registData.fulfilled, (state, action) => {
+            state.userData = action.payload;
+         })
    }
 })
 
-export const { setUserData } = quitzSlice.actions;
+export const { setUserData } = authSlice.actions;

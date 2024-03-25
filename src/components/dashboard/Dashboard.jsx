@@ -1,9 +1,9 @@
 // import Options from "./Options";
 import { useSelector } from 'react-redux';
-import '../scss/components/Index.scss'
+import '../../scss/components/Dashboard.scss'
 import Section from './Section';
 
-const Index = () => {
+const Dashboard = () => {
 
    const sections = useSelector(state => state.section.doneSections);
 
@@ -25,4 +25,4 @@ const Index = () => {
    );
 }
 
-export default Index;
+export default Dashboard;

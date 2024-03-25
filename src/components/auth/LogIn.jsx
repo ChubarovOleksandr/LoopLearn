@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import eyeMoving from '../assets/gif/eye.gif'
-import eye from '../assets/img/eye.png'
-import '../scss/components/Auth.scss'
+import eyeMoving from '../../assets/gif/eye.gif'
+import eye from '../../assets/img/eye.png'
+import '../../scss/components/Auth.scss'
 import { NavLink } from 'react-router-dom';
 
 const LogIn = () => {
@@ -13,7 +13,7 @@ const LogIn = () => {
       <div className="container">
          <div className="title">LoopLearn</div>
          <form action="" onClick={(e) => e.preventDefault()} className="LogInForm">
-            <input type="text" className='username' placeholder='Enter your login' />
+            <input type="text" className='username' placeholder='Введите логин' />
             <label>
                <button 
                   onClick={()=>setShowPassword(!showPassword)}
@@ -26,12 +26,12 @@ const LogIn = () => {
                      <img src={eyeMoving} alt="Eye gif" />
                   )}
                </button>
-               <input type={showPassword ? 'text' : 'password'} className='password' placeholder='Password' />
+               <input type={showPassword ? 'text' : 'password'} className='password' placeholder='Пароль' />
             </label>
-            <button className='main-button'>Log In</button>
+            <button className='main-button'>Войти</button>
          </form>
-         <NavLink to='/sign-up' className='second-button'>Sign Up</NavLink>
-         <button className='recovery-button'>Forgot your password?</button>
+         <NavLink to='/sign-up' className='second-button'>Создать аккаунт</NavLink>
+         <button className='recovery-button'>Забыли пароль?</button>
       </div>
    </main>
 }

@@ -1,5 +1,5 @@
-import '../scss/components/Header.scss';
-import blackCube from '../assets/img/black-cube.png';
+import '../../scss/components/Header.scss';
+import blackCube from '../../assets/img/black-cube.png';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {

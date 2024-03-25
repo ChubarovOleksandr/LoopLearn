@@ -56,12 +56,17 @@ export const sectionSlice = createSlice({
       },
       removeSection(state, action) {
          state.doneSections.map((item, index) => {
-            if(item.id === action.payload.id){
+            if (item.id === action.payload.id) {
                state.doneSections.splice(index, 1);
             }
          })
+         console.log(JSON.parse(JSON.stringify(state.doneSections)));
+      },
+      setChangingSectionId(state, action) {
+         state.changingSectionId = action.payload.id;
       },
    }
 })
 
-export const { addSection, saveSectionQuestion, changeSectionQuestion, removeSectionQuestion, autoSaveText, addAnswer, removeSection } = sectionSlice.actions;
+export const { addSection, saveSectionQuestion, changeSectionQuestion, removeSectionQuestion,
+   autoSaveText, addAnswer, removeSection, setChangingSectionId } = sectionSlice.actions;

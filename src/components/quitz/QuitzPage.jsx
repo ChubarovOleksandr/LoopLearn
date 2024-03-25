@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import '../scss/components/Quitz.scss'
+import '../../scss/components/Quitz.scss'
 import { NavLink, Navigate } from 'react-router-dom';
-import { removeQuestion, leftQuestion, addFailedQuestion } from '../redux/slice/quitzSlice';
+import { removeQuestion, leftQuestion, addFailedQuestion } from '../../redux/slice/quitzSlice';
 import { useEffect, useRef, useState } from 'react';
 
-const Quitz = () => {
+const QuitzPage = () => {
 
    const dispatch = useDispatch();
    const { items: item, totalCounts: totalCounts, failedQuestion } = useSelector(state => state.quitz);
@@ -63,4 +63,4 @@ const Quitz = () => {
    );
 }
 
-export default Quitz;
+export default QuitzPage;
