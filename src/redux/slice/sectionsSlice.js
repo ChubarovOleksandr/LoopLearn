@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getDataFromLS } from "../../utils/LS";
+
+const doneSections = getDataFromLS('sections');
 
 const initialState = {
-   doneSections: [],
+   doneSections,
    creatingSectionQuestion: [],
    changingSectionId: null,
    autoSavedName: '',
