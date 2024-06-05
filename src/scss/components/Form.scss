@@ -1,0 +1,95 @@
+// variables
+
+@import "../variables";
+
+.form {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 10px 0;
+   .highlighted {
+      position: relative;
+      &:before,
+      &:after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         height: 1px;
+         width: 30%;
+         border-radius: 5px;
+         transform: translate(0, -50%);
+         background: $WhiteT-text-color-black;
+      }
+      &:before {
+         left: -10%;
+      }
+      &:after {
+         right: -10%;
+      }
+   }
+   .form__part {
+      display: flex;
+      flex-direction: column;
+      input {
+         color: $WhiteT-text-color-black;
+         padding: 10px 10px 10px 20px;
+         font-size: 20px;
+         border: 1px solid $paper;
+         box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
+         background: $WhiteT-bg-color-white-grey;
+         border-radius: 10px;
+         opacity: 0.8;
+         transition: opacity 0.4s;
+         font-family: $Nunito;
+         width: 500px;
+         height: 45px;
+         &:focus {
+            transition: opacity 0.4s;
+            opacity: 1;
+         }
+      }
+   }
+   .add-question {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      textarea {
+         width: 445px;
+         min-height: 45px;
+         max-height: 500px;
+         resize: none;
+         height: auto;
+         overflow-y: hidden;
+         color: $WhiteT-text-color-black;
+         padding: 10px 10px 10px 20px;
+         font-size: 20px;
+         border: 1px solid $paper;
+         box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
+         background: $WhiteT-bg-color-white-grey;
+         border-radius: 10px;
+         opacity: 0.8;
+         font-family: $Nunito;
+         transition: opacity 0.4s;
+         &:focus {
+            transition: opacity 0.4s;
+            opacity: 1;
+         }
+      }
+      button {
+         border-radius: 5px;
+         width: 45px;
+         height: 45px;
+         background: $WhiteT-bg-color-add;
+         transition: all 0.4s;
+         font-size: 24px;
+         font-family: $Poppins;
+         font-weight: 400;
+         color: $WhiteT-text-color-white;
+         &:hover {
+            background: $WhiteT-bg-color-add-hover;
+            transition: all 0.4s;
+         }
+      }
+   }
+}

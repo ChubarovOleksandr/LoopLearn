@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import '../../scss/components/Quitz.scss'
+import '../../scss/pages/Quitz.scss'
 import { NavLink, Navigate } from 'react-router-dom';
 import { removeQuestion, leftQuestion, addFailedQuestion } from '../../redux/slice/quitzSlice';
 import { useEffect, useRef, useState } from 'react';

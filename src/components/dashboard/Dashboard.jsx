@@ -1,6 +1,6 @@
 // import Options from "./Options";
 import { useSelector } from 'react-redux';
-import '../../scss/components/Dashboard.scss'
+import '../../scss/pages/Dashboard.scss'
 import Section from './Section';
 
 const Dashboard = () => {

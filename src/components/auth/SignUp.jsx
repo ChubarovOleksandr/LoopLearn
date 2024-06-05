@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import '../../scss/components/Auth.scss'
+import '../../scss/pages/Auth.scss'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registData } from '../../redux/slice/auth';

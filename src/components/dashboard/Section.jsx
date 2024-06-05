@@ -1,65 +1,59 @@
 /* eslint-disable react/prop-types */
-import { NavLink, Navigate } from 'react-router-dom';
 import play from '../../assets/img/play.png';
-import '../../scss/components/Dashboard.scss'
-import { addQuestions } from '../../redux/slice/quitzSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+import '../../scss/pages/Dashboard.scss'
 import more from '../../assets/img/ellipsis.png'
 import pencil from '../../assets/img/pencil.png'
 import trash from '../../assets/img/trash-bin.png'
-import { removeSection, setChangingSectionId } from '../../redux/slice/sectionsSlice';
 
 const Section = ({ item }) => {
 
-   const dispatch = useDispatch();
-   const optionsRef = useRef();
-   const [userComfirm, setUserConfirm] = useState(false);
-   const creatingSectionQuestion = useSelector(state => state.section.creatingSectionQuestion);
-   const creatingSectionName = useSelector(state => state.section.autoSavedName);
-   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+   // const dispatch = useDispatch();
+   // const optionsRef = useRef();
+   // const [userComfirm, setUserConfirm] = useState(false);
+   // const creatingSectionQuestion = useSelector(state => state.section.creatingSectionQuestion);
+   // const creatingSectionName = useSelector(state => state.section.autoSavedName);
+   // const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
-   const onPlayHandler = () => {
-      dispatch(addQuestions(item));
-   }
+   // const onPlayHandler = () => {
+   //    dispatch(addQuestions(item));
+   // }
 
-   const onRemoveHandler = () => {
-      dispatch(removeSection(item));
-   }
+   // const onRemoveHandler = () => {
+   // }
 
-   const onChangeHandler = () => {
-      if (creatingSectionQuestion.length != 0 || creatingSectionName != '') {
-         setUserConfirm(confirm('Вы начали создавать один отдел, но ещё не сохранили его, недобавленный отдел будет не сохранен. Вы уверенны?'))
-      } else {
-         setUserConfirm(true);
-      }
-   }
+   // const onChangeHandler = () => {
+   //    if (creatingSectionQuestion.length != 0 || creatingSectionName != '') {
+   //       setUserConfirm(confirm('Вы начали создавать один отдел, но ещё не сохранили его, недобавленный отдел будет не сохранен. Вы уверенны?'))
+   //    } else {
+   //       setUserConfirm(true);
+   //    }
+   // }
    
-   useEffect(() => {
-      const toggleIsOpened = event => {
-         if (!event.composedPath().includes(optionsRef.current)) {
-            setIsOptionsVisible(false);
-         }
-      }
+   // useEffect(() => {
+   //    const toggleIsOpened = event => {
+   //       if (!event.composedPath().includes(optionsRef.current)) {
+   //          setIsOptionsVisible(false);
+   //       }
+   //    }
       
-      document.addEventListener('click', toggleIsOpened);
+   //    document.addEventListener('click', toggleIsOpened);
       
-      return () => {
-         document.removeEventListener('click', toggleIsOpened);
-      }
+   //    return () => {
+   //       document.removeEventListener('click', toggleIsOpened);
+   //    }
       
-   }, [isOptionsVisible])
+   // }, [isOptionsVisible])
    
-   if(userComfirm){
-      dispatch(setChangingSectionId({id: item.id}))
-      console.log(item.id);
-      return <Navigate to='change' />
-   }
+   // if(userComfirm){
+   //    dispatch(setChangingSectionId({id: item.id}))
+   //    console.log(item.id);
+   //    return <Navigate to='change' />
+   // }
 
 
    return (
       <div className="section">
-         <div className="functions" ref={optionsRef}>
+         {/* <div className="functions" ref={optionsRef}>
             <button className={isOptionsVisible ? 'visible options' : 'options'} onClick={() => setIsOptionsVisible(!isOptionsVisible)}><img src={more} alt="other-functions" /></button>
             {isOptionsVisible &&
                <div className="options-body">
@@ -78,7 +72,7 @@ const Section = ({ item }) => {
          </div>
          <NavLink to='quitz' onClick={() => onPlayHandler()} className="play">
             <img src={play} alt="play" />
-         </NavLink>
+         </NavLink> */}
       </div>
    );
 }

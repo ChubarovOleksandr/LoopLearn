@@ -1,4 +1,4 @@
-import '../../scss/components/Header.scss';
+import '../../scss/pages/Header.scss';
 import blackCube from '../../assets/img/black-cube.png';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';

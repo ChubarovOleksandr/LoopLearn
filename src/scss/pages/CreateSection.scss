@@ -1,0 +1,101 @@
+// variables
+@import "../variables";
+
+body {
+   &::-webkit-scrollbar {
+      width: 7px;
+      height: 100%;
+      &:hover {
+         cursor: pointer;
+      }
+   }
+   &::-webkit-scrollbar-track {
+      background: none;
+   }
+   &::-webkit-scrollbar-thumb {
+      background: #696969;
+      border-radius: 25px;
+   }
+   &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+   }
+}
+
+.create-section {
+   padding: 80px 0 0px 0;
+   height: 80%;
+   .create-section__body {
+      border-radius: 30px;
+      box-shadow: 0px 0px 20px $WhiteT-bg-color-grey;
+      padding: 0px 0 100px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
+         text-align: center;
+         background: $WhiteT-bg-color-black;
+         color: $WhiteT-text-color-white;
+         padding: 25px 0;
+         font-size: 32px;
+         font-family: $Nunito;
+         font-weight: 600;
+         border-top-right-radius: 30px;
+         border-top-left-radius: 30px;
+         width: 100%;
+      }
+      span {
+         text-align: center;
+         margin: 30px 0;
+         font-family: $Nunito;
+         font-weight: 500;
+         font-size: 20px;
+      }
+      ul {
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         align-items: center;
+         margin-top: 20px;
+         li {
+            width: 500px;
+            display: flex;
+            justify-content: flex-start;
+            .question {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               gap: 5px;
+               textarea {
+                  width: 450px;
+                  max-height: 500px;
+                  resize: none;
+                  height: 45px;
+                  overflow-y: hidden;
+                  font-family: $Nunito;
+                  font-size: 16px;
+                  background: $WhiteT-bg-color-white-grey;
+                  color: $WhiteT-text-color-black;
+                  padding: 10px 10px 10px 20px;
+                  border: 1px solid $paper;
+                  box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
+                  border-radius: 10px;
+                  opacity: 0.8;
+                  transition: opacity 0.4s;
+                  &:focus {
+                     transition: opacity 0.4s;
+                     opacity: 1;
+                  }
+               }
+               span {
+                  width: 45px;
+                  font-size: 16px;
+                  color: $WhiteT-bg-color-black-grey;
+               }
+            }
+            .answer {
+            }
+         }
+      }
+   }
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import eyeMoving from '../../assets/gif/eye.gif'
 import eye from '../../assets/img/eye.png'
-import '../../scss/components/Auth.scss'
+import '../../scss/pages/Auth.scss'
 import { NavLink } from 'react-router-dom';
 
 const LogIn = () => {
