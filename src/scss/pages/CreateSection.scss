@@ -27,7 +27,7 @@ body {
    .create-section__body {
       border-radius: 30px;
       box-shadow: 0px 0px 20px $WhiteT-bg-color-grey;
-      padding: 0px 0 100px 0;
+      padding: 0px 0 30px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -58,19 +58,41 @@ body {
          align-items: center;
          margin-top: 20px;
          li {
-            width: 500px;
             display: flex;
-            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            textarea {
+               resize: none;
+               height: 45px;
+               width: 400px;
+               overflow-y: hidden;
+               font-family: $Nunito;
+               font-size: 16px;
+               background: $WhiteT-bg-color-white-grey;
+               color: $WhiteT-text-color-black;
+               padding: 10px 10px 10px 20px;
+               border: 1px solid $paper;
+               box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
+               border-radius: 10px;
+               opacity: 0.8;
+               transition: opacity 0.4s;
+               &:focus {
+                  transition: opacity 0.4s;
+                  opacity: 1;
+               }
+            }
             .question {
                display: flex;
                align-items: center;
-               justify-content: space-between;
-               gap: 5px;
+               justify-content: center;
+               gap: 10px;
+               position: relative;
                textarea {
-                  width: 450px;
-                  max-height: 500px;
                   resize: none;
                   height: 45px;
+                  width: 400px;
                   overflow-y: hidden;
                   font-family: $Nunito;
                   font-size: 16px;
@@ -87,15 +109,82 @@ body {
                      opacity: 1;
                   }
                }
-               span {
+               textarea.w500 {
+                  width: 450px;
+               }
+               .question__remove {
+                  background: $WhiteT-bg-color-remove;
+                  font-size: 24px;
+                  font-family: "Poppins", sans-serif;
+                  font-weight: 400;
                   width: 45px;
-                  font-size: 16px;
-                  color: $WhiteT-bg-color-black-grey;
+                  height: 45px;
+                  border-radius: 5px;
+                  color: rgb(255, 255, 255);
+                  &:hover {
+                     background: $WhiteT-bg-color-remove-hover;
+                     transition: all 0.4s;
+                  }
+               }
+               .question__add-answer {
+                  width: 45px;
+                  height: 45px;
+                  background: $WhiteT-bg-color-add;
+                  transition: all 0.4s;
+                  border-radius: 5px;
+                  &:hover {
+                     background: $WhiteT-bg-color-add-hover;
+                     transition: all 0.4s;
+                  }
                }
             }
             .answer {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               width: 100%;
+               margin-top: 10px;
+               .corner {
+                  width: 45px;
+                  height: 45px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  .corner-shape {
+                     height: 20px;
+                     width: 20px;
+                     border-left: 2px solid $WhiteT-bg-color-grey;
+                     border-bottom: 2px solid $WhiteT-bg-color-grey;
+                     border-bottom-left-radius: 15px;
+                  }
+               }
+               .answer__remove {
+                  background: $WhiteT-bg-color-remove;
+                  font-size: 24px;
+                  font-family: "Poppins", sans-serif;
+                  font-weight: 400;
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 5px;
+                  color: rgb(255, 255, 255);
+                  &:hover {
+                     background: $WhiteT-bg-color-remove-hover;
+                     transition: all 0.4s;
+                  }
+               }
             }
          }
+      }
+      .create-section__save-btn {
+         box-shadow: 0px 0px 25px rgb(201, 195, 195);
+         padding: 18px 30px;
+         margin-top: 20px;
+         background: $WhiteT-bg-color-black;
+         color: $WhiteT-text-color-white;
+         border-radius: 50px;
+         font-size: 24px;
+         font-family: $Montserat;
+         font-weight: 400;
       }
    }
 }
