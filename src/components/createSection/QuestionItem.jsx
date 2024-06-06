@@ -9,6 +9,8 @@ const QuestionItem = ({ item, index }) => {
 
    const questionRef = useRef();
 
+   console.log(item);
+
    const onChangeQuestion = (value) => {
       dispatch(changeQuestion({ id: item.id, questionText: value }))
    }
@@ -22,7 +24,9 @@ const QuestionItem = ({ item, index }) => {
          <div className="question">
             <span>{++index}.</span>
             <textarea ref={questionRef} value={item.questionText} onChange={e => onChangeQuestion(e.target.value)} />
+            <button className="question__remove">-</button>
          </div>
+
       </li>
    );
 }
