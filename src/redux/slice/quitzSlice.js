@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-   items: {},
+   currentSection: null,
    totalCounts: 0,
    failedQuestion: [],
 };
@@ -10,24 +10,26 @@ export const quitzSlice = createSlice({
    name: 'quitzSlice',
    initialState,
    reducers: {
-      addQuestions(state, action) {
-         state.items = action.payload;
-         state.totalCounts = action.payload.questions.length;
-         state.failedQuestion = [];
+      setCurrentSection(state, action){
+         state.currentSection = action.payload;
       },
-      removeQuestion(state, action) {  // remove questioN from questionS
-         state.items.questions = state.items.questions.filter(item => item.id !== action.payload);
+      removePassedQuestion(state, action) {
+         state.currentSection.questions = state.currentSection.questions.filter(question => question.id !== action.payload.id);
       },
-      leftQuestion(state) {
-         state.items.questions.push(state.items.questions.splice(0, 1)[0]);
+      setTotalCounts(state, action) {
+         state.totalCounts = action.payload;
+      },
+      leftQuestion(state, action) {
+         const firstEl = state.currentSection.questions.shift();
+         state.currentSection.questions.push(firstEl);
       },
       addFailedQuestion(state, action) {
-         const isExist = state.failedQuestion.some(item => item.id === action.payload.id);
-         if(!isExist){
-            state.failedQuestion.push(action.payload)
+         if(!state.failedQuestion.some(question => question.id === action.payload.id)){
+            state.failedQuestion.push(action.payload);
+            console.log(JSON.parse(JSON.stringify(state.failedQuestion)));
          }
-      },
+      }
    }
 })
 
-export const { addQuestions, removeQuestion, leftQuestion, addFailedQuestion } = quitzSlice.actions;
+export const { setCurrentSection, removePassedQuestion, setTotalCounts, leftQuestion, addFailedQuestion } = quitzSlice.actions;

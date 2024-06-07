@@ -1,14 +1,23 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../scss/pages/CreateSection.scss'
 import CreateSectionForm from './CreateSectionForm';
 import QuestionList from './QuestionList';
+import { saveSection } from '../../redux/slice/sectionsSlice';
+import { setDataToLS } from '../../utils/LS';
+import { useNavigate } from 'react-router-dom';
 
 const CreateSection = () => {
 
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
    const question = useSelector(state => state.section.newSection.questions);
+   const section = useSelector(state => state.section.newSection);
 
    const onSaveSection = () => {
-      dispa
+      setDataToLS(section)
+      dispatch(saveSection());
+      navigate('/');
    }
 
    return (

@@ -33,7 +33,7 @@ export const sectionSlice = createSlice({
       },
       setAnswer(state, action) {
          state.newSection.questions.map(question => {
-            if(question.id === action.payload.id) {
+            if (question.id === action.payload.id) {
                question.answer = action.payload.answer;
             }
          })
@@ -44,8 +44,23 @@ export const sectionSlice = createSlice({
                delete question.answer;
             }
          });
+      },
+      saveSection(state, action) {
+         const section = state.newSection;
+         state.doneSections.push({ ...section, id: state.doneSections.length });
+         state.newSection = {
+            name: '',
+            questions: [],
+         }
+      },
+      setNewSection(state, action) {
+         state.newSection = action.payload;
+      },
+      removeDoneSection(state, action) {
+         state.doneSections = state.doneSections.filter(section => section.id !== action.payload);
       }
    }
 })
 
-export const { setSectionName, addQuestion, changeQuestion, removeQuestion, setAnswer, removeAnswer } = sectionSlice.actions;
+export const { setSectionName, addQuestion, changeQuestion, removeQuestion, setAnswer, removeAnswer, saveSection, setNewSection,
+   removeDoneSection } = sectionSlice.actions;
