@@ -46,8 +46,7 @@ export const sectionSlice = createSlice({
          });
       },
       saveSection(state, action) {
-         const section = state.newSection;
-         state.doneSections.push({ ...section, id: state.doneSections.length });
+         state.doneSections.push(action.payload);
          state.newSection = {
             name: '',
             questions: [],
@@ -58,9 +57,15 @@ export const sectionSlice = createSlice({
       },
       removeDoneSection(state, action) {
          state.doneSections = state.doneSections.filter(section => section.id !== action.payload);
+      },
+      updateSection(state, action) {
+         const sectionIndex = state.doneSections.findIndex(section => section.id === action.payload.id);
+         if (sectionIndex !== -1) {
+            state.doneSections[sectionIndex] = action.payload;
+         }
       }
    }
 })
 
 export const { setSectionName, addQuestion, changeQuestion, removeQuestion, setAnswer, removeAnswer, saveSection, setNewSection,
-   removeDoneSection } = sectionSlice.actions;
+   removeDoneSection, updateSection } = sectionSlice.actions;

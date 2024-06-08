@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../../scss/pages/CreateSection.scss'
 import CreateSectionForm from './CreateSectionForm';
 import QuestionList from './QuestionList';
-import { saveSection } from '../../redux/slice/sectionsSlice';
-import { setDataToLS } from '../../utils/LS';
+import { saveSection, updateSection } from '../../redux/slice/sectionsSlice';
+import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
 const CreateSection = () => {
@@ -15,8 +15,11 @@ const CreateSection = () => {
    const section = useSelector(state => state.section.newSection);
 
    const onSaveSection = () => {
-      setDataToLS(section)
-      dispatch(saveSection());
+      if(!section.id){
+         dispatch(saveSection({ ...section, id: uuidv4() }));
+      } else {
+         dispatch(updateSection(section));
+      }
       navigate('/');
    }
 

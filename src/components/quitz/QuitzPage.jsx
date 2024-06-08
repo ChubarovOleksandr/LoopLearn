@@ -13,11 +13,11 @@ const QuitzPage = () => {
 
    const [isComplete, setIsComplete] = useState(false);
    const [currVal, setCurrVal] = useState(0);
+   const [flipped, setFlipped] = useState(false);
 
    const time = 10;
 
    const activeIndexRef = useRef(1);
-   const cardRef = useRef();
 
    const questionPassed = () => {
       if (section.questions.length - 1 > 0) {
@@ -26,12 +26,21 @@ const QuitzPage = () => {
       } else {
          setIsComplete(true);
       }
+      setFlipped(false);
    }
 
    const questionFailed = () => {
-      // dispatch(leftQuestion());
-      // dispatch(addFailedQuestion(section.questions[0]));
-      cardRef.current.classList.add('flip-vertical-right');
+      dispatch(leftQuestion());
+      dispatch(addFailedQuestion(section.questions[0]));
+      setFlipped(false);
+   }
+
+   const checkAnswer = () => {
+      if(section.questions[0].answer){
+         setFlipped(true);
+      } else {
+         questionFailed();
+      }
    }
 
    if (!section || !section.questions || section.questions.length === 0) {
@@ -61,15 +70,21 @@ const QuitzPage = () => {
                   </div>
                </>
                :
-               <>
-                  <div className="card" ref={cardRef}>
+               <div className={`card ${flipped ? 'flipped' : ''}`}>
+                  <div className="card-front">
                      <div className="question" >{section.questions[0].questionText}</div>
                      <div className="buttons">
                         <button className='confirm' onClick={questionPassed}>Могу ответить</button>
-                        <button className='reject' onClick={questionFailed}>Не могу ответить</button>
+                        <button className='reject' onClick={checkAnswer}>Не могу ответить</button>
                      </div>
                   </div>
-               </>
+                  <div className="card-back">
+                     <div className="question" >{section.questions[0].answer}</div>
+                     <div className="buttons">
+                        <button className='check' onClick={questionFailed}>Следующий вопрос</button>
+                     </div>
+                  </div>
+               </div>
             }
          </div>
       </main>

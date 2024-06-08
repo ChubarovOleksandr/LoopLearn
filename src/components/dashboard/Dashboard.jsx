@@ -2,10 +2,16 @@
 import { useSelector } from 'react-redux';
 import '../../scss/pages/Dashboard.scss'
 import Section from './Section';
+import { useEffect } from 'react';
+import { setDataToLS } from '../../utils/LS';
 
 const Dashboard = () => {
 
    const sections = useSelector(state => state.section.doneSections);
+
+   useEffect(()=> {
+      setDataToLS('sections', sections);
+   }, [sections])
 
    return (
       <main className="main">

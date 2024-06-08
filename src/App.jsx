@@ -4,7 +4,6 @@ import './scss/App.scss';
 import Index from "./components/dashboard/Dashboard";
 import CreateSection from "./components/createSection/CreateSection";
 import QuitzPage from "./components/quitz/QuitzPage";
-import ChangeSection from "./components/changeSection/ChangeSection";
 import SignUp from "./components/auth/SignUp";
 import LogIn from "./components/auth/LogIn";
 
@@ -18,7 +17,6 @@ function App() {
             <Route element={<Layout />}>
                <Route index element={<Index />} />
                <Route path="create" element={<CreateSection />} />
-               <Route path="change" element={<ChangeSection />} />
                <Route path="quitz" element={<QuitzPage />} />
             </Route>
          </Routes>
