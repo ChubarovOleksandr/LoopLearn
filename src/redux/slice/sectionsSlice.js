@@ -19,7 +19,7 @@ export const sectionSlice = createSlice({
          state.newSection.name = action.payload;
       },
       addQuestion(state, action) {
-         state.newSection.questions.push({ questionText: action.payload, id: state.newSection.questions.length })
+         state.newSection.questions.unshift({ questionText: action.payload, id: state.newSection.questions.length })
       },
       changeQuestion(state, action) {
          state.newSection.questions.map(question => {
