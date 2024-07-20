@@ -3,17 +3,22 @@ import '../../scss/pages/Dashboard.scss'
 import more from '../../assets/img/ellipsis.png'
 import pencil from '../../assets/img/pencil.png'
 import trash from '../../assets/img/trash-bin.png'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { removeDoneSection, setNewSection } from '../../redux/slice/sectionsSlice';
-import { setCurrentSection } from '../../redux/slice/quitzSlice';
+import { setCurrentSection } from '../../redux/slice/quitzSlice.ts';
+import { ISection } from './Dashboard';
 
-const Section = ({ item }) => {
+interface IProps {
+   item: ISection,
+}
+
+const Section: React.FC<IProps> = ({ item }) => {
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   const optionsRef = useRef();
+   const optionsRef = useRef<HTMLDivElement | null>(null);
    const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
    const onChangeHandler = () => {
@@ -24,6 +29,7 @@ const Section = ({ item }) => {
    const onRemoveHandler = () => {
       dispatch(removeDoneSection(item.id));
       setIsOptionsVisible(false);
+      window.location.reload();
    }
    
    const onPlayHandler = () => {
@@ -31,8 +37,8 @@ const Section = ({ item }) => {
    }
 
    useEffect(() => {
-      const toggleIsOpened = event => {
-         if (!event.composedPath().includes(optionsRef.current)) {
+      const toggleIsOpened = (event: MouseEvent) => {
+         if (optionsRef.current && !event.composedPath().includes(optionsRef.current)) {
             setIsOptionsVisible(false);
          }
       }

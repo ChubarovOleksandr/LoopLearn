@@ -4,10 +4,23 @@ import '../../scss/pages/Dashboard.scss'
 import Section from './Section';
 import { useEffect } from 'react';
 import { setDataToLS } from '../../utils/LS';
+import { RootState } from '../../redux';
 
-const Dashboard = () => {
+export interface IQuestion {
+   answer: string,
+   id: number,
+   questionText: string
+}
 
-   const sections = useSelector(state => state.section.doneSections);
+export interface ISection {
+   id?: string,
+   name: string,
+   questions: IQuestion[]
+}
+
+const Dashboard: React.FC = () => {
+
+   const sections: ISection[] = useSelector((state: RootState) => state.section.doneSections);   
 
    useEffect(()=> {
       setDataToLS('sections', sections);
@@ -17,7 +30,7 @@ const Dashboard = () => {
       <main className="main">
          <div className="wrapper">
             {/* <Options /> */}
-            {sections.length != 0 ?
+            {sections.length > 0 ?
                <div className="sections">
                   {sections.map(item => {
                      return <Section key={item.id} item={item} />

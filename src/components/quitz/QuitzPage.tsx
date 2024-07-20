@@ -3,19 +3,22 @@ import '../../scss/pages/Quitz.scss'
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { addFailedQuestion, leftQuestion, removePassedQuestion, setTotalCounts } from '../../redux/slice/quitzSlice';
 import { useEffect, useRef, useState } from 'react';
+import { ISection } from '../dashboard/Dashboard';
+import { RootState } from '../../redux';
 
-const QuitzPage = () => {
+const QuitzPage: React.FC = () => {
 
    const dispatch = useDispatch();
 
-   const section = useSelector(state => state.quitz.currentSection);
-   const { totalCounts, failedQuestion } = useSelector(state => state.quitz);
+   const section: ISection = useSelector((state: RootState) => state.quitz.currentSection);
+   
+   const { totalCounts, failedQuestion } = useSelector((state: RootState) => state.quitz);
 
    const [isComplete, setIsComplete] = useState(false);
    const [currVal, setCurrVal] = useState(0);
    const [flipped, setFlipped] = useState(false);
 
-   const time = 10;
+   const time: number = 10;
 
    const activeIndexRef = useRef(1);
 

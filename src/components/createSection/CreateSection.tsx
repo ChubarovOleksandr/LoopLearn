@@ -5,17 +5,21 @@ import QuestionList from './QuestionList';
 import { saveSection, updateSection } from '../../redux/slice/sectionsSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../redux';
+import { IQuestion, ISection } from '../dashboard/Dashboard';
 
-const CreateSection = () => {
+
+
+const CreateSection: React.FC = () => {
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
-   const question = useSelector(state => state.section.newSection.questions);
-   const section = useSelector(state => state.section.newSection);
-
+   const question: IQuestion[] = useSelector((state: RootState) => state.section.newSection.questions);
+   const section: ISection = useSelector((state: RootState) => state.section.newSection);
+      
    const onSaveSection = () => {
-      if(!section.id){
+      if (!section.id) {
          dispatch(saveSection({ ...section, id: uuidv4() }));
       } else {
          dispatch(updateSection(section));

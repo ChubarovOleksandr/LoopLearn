@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './App'
 import { BrowserRouter } from 'react-router-dom'
 import './scss/libs/nullstyle.scss'
 import { Provider } from 'react-redux'
-import { store } from './redux/index.js'
+import { store } from './redux/index'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
    <React.StrictMode>
       <BrowserRouter>
          <Provider store={store}>

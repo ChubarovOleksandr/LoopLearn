@@ -3,17 +3,23 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeQuestion, removeAnswer, removeQuestion, setAnswer } from "../../redux/slice/sectionsSlice";
 import enterArrow from '../../assets/img/enter-arrow.png';
+import { IQuestion } from "../dashboard/Dashboard";
 
-const QuestionItem = ({ item, index }) => {
+interface IProps {
+   item: IQuestion,
+   index: number
+}
+
+const QuestionItem: React.FC<IProps> = ({ item, index }) => {
 
    const dispatch = useDispatch();
 
-   const questionRef = useRef();
-   const answerRef = useRef();
+   const questionRef = useRef<HTMLTextAreaElement | null>(null);
+   const answerRef = useRef<HTMLTextAreaElement | null>(null);
 
    const [isAnswerVisible, setIsAnswerVisible] = useState(!!item.answer);
 
-   const onChangeQuestion = (value) => {
+   const onChangeQuestion = (value: string) => {
       dispatch(changeQuestion({ id: item.id, questionText: value }))
    }
 
@@ -21,7 +27,7 @@ const QuestionItem = ({ item, index }) => {
       dispatch(removeQuestion({ id: item.id }));
    }
    
-   const onAnswerChangeText = (value) => {
+   const onAnswerChangeText = (value: string) => {
       dispatch(setAnswer({id: item.id, answer: value}));
    }
 
@@ -31,8 +37,8 @@ const QuestionItem = ({ item, index }) => {
    }
 
    useEffect(() => {
-      autosize(questionRef.current);
-      autosize(answerRef.current);
+      if (questionRef.current) autosize(questionRef.current);
+      if (answerRef.current) autosize(answerRef.current);
    }, [questionRef.current, answerRef.current])
 
    return (
@@ -49,7 +55,7 @@ const QuestionItem = ({ item, index }) => {
                <div className="corner">
                   <div className="corner-shape"></div>
                </div>
-               <textarea onChange={(event) => onAnswerChangeText(event.target.value)} ref={answerRef} value={item.answer} rows="1"></textarea>
+               <textarea onChange={(event) => onAnswerChangeText(event.target.value)} ref={answerRef} value={item.answer} rows={1}></textarea>
                <button className="answer__remove" onClick={() => onRemoveAnswer()}>-</button>
             </div>
          }

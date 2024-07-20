@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSectionName } from "../../redux/slice/sectionsSlice";
+import { RootState } from "../../redux";
 
-const CreateSectionName = ({ }) => {
+const CreateSectionName: React.FC = ({ }) => {
 
    const dispatch = useDispatch();
 
-   const name = useSelector(state => state.section.newSection.name);
+   const name = useSelector((state: RootState) => state.section.newSection.name);
    
-   const onChangeSectionName = (value) => {
+   const onChangeSectionName = (value: string) => {
       dispatch(setSectionName(value));
    }
 

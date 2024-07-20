@@ -63,9 +63,15 @@ export const sectionSlice = createSlice({
          if (sectionIndex !== -1) {
             state.doneSections[sectionIndex] = action.payload;
          }
+      },
+      clearNewSection(state, action) {
+         state.newSection = {
+            name: '',
+            questions: []
+         }
       }
    }
 })
 
 export const { setSectionName, addQuestion, changeQuestion, removeQuestion, setAnswer, removeAnswer, saveSection, setNewSection,
-   removeDoneSection, updateSection } = sectionSlice.actions;
+   removeDoneSection, updateSection, clearNewSection } = sectionSlice.actions;

@@ -1,4 +1,4 @@
-const Options = () => {
+const Options: React.FC = () => {
    return ( 
       <div className="options">
          <div className="selected">

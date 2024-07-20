@@ -7,10 +7,10 @@ const CreateSectionQuestion = () => {
 
    const dispatch = useDispatch();
 
-   const textareaRef = useRef();
+   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
    const onQuestionAdd = () => {
-      if (textareaRef.current.value){
+      if (textareaRef.current?.value){
          dispatch(addQuestion(textareaRef.current.value))
          textareaRef.current.value = '';
          autosize.update(textareaRef.current);
@@ -20,7 +20,9 @@ const CreateSectionQuestion = () => {
    }
 
    useEffect(()=>{
-      autosize(textareaRef.current);
+      if (textareaRef.current) {
+         autosize(textareaRef.current);
+      }
    }, [textareaRef.current])
 
    return (

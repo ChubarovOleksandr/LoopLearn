@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface QuitzState {
+   currentSection: any,
+   totalCounts: number,
+   failedQuestion: any
+}
+
+const initialState: QuitzState = {
    currentSection: null,
    totalCounts: 0,
    failedQuestion: [],
@@ -11,6 +17,8 @@ export const quitzSlice = createSlice({
    initialState,
    reducers: {
       setCurrentSection(state, action){
+         console.log(action.payload);
+         
          state.currentSection = action.payload;
       },
       removePassedQuestion(state, action) {
@@ -26,7 +34,6 @@ export const quitzSlice = createSlice({
       addFailedQuestion(state, action) {
          if(!state.failedQuestion.some(question => question.id === action.payload.id)){
             state.failedQuestion.push(action.payload);
-            console.log(JSON.parse(JSON.stringify(state.failedQuestion)));
          }
       }
    }
