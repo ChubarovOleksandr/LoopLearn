@@ -7,16 +7,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../redux';
 import { IQuestion, ISection } from '../dashboard/Dashboard';
-
-
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 const CreateSection: React.FC = () => {
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
    const navigate = useNavigate();
 
-   const question: IQuestion[] = useSelector((state: RootState) => state.section.newSection.questions);
-   const section: ISection = useSelector((state: RootState) => state.section.newSection);
+   const question: IQuestion[] = useAppSelector(state => state.section.newSection.questions);
+   const section: ISection = useAppSelector(state => state.section.newSection);
       
    const onSaveSection = () => {
       if (!section.id) {

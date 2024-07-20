@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IQuestion, ISection } from "../../components/dashboard/Dashboard";
 
 interface QuitzState {
-   currentSection: any,
+   currentSection: ISection | null,
    totalCounts: number,
-   failedQuestion: any
+   failedQuestion: IQuestion[],
 }
 
 const initialState: QuitzState = {
@@ -16,22 +17,26 @@ export const quitzSlice = createSlice({
    name: 'quitzSlice',
    initialState,
    reducers: {
-      setCurrentSection(state, action){
-         console.log(action.payload);
-         
+      setCurrentSection(state, action: PayloadAction<ISection>){
          state.currentSection = action.payload;
       },
-      removePassedQuestion(state, action) {
-         state.currentSection.questions = state.currentSection.questions.filter(question => question.id !== action.payload.id);
+      removePassedQuestion(state, action: PayloadAction<{id: number}>) {
+         if (state.currentSection) {
+            state.currentSection.questions = state.currentSection.questions.filter(question => question.id !== action.payload.id);
+         }
       },
-      setTotalCounts(state, action) {
+      setTotalCounts(state, action: PayloadAction<number>) {
          state.totalCounts = action.payload;
       },
-      leftQuestion(state, action) {
-         const firstEl = state.currentSection.questions.shift();
-         state.currentSection.questions.push(firstEl);
+      leftQuestion(state) {
+         if (state.currentSection) {
+            const firstEl = state.currentSection.questions.shift();
+            if (firstEl) {
+               state.currentSection.questions.push(firstEl);
+            }
+         }
       },
-      addFailedQuestion(state, action) {
+      addFailedQuestion(state, action: PayloadAction<IQuestion>) {         
          if(!state.failedQuestion.some(question => question.id === action.payload.id)){
             state.failedQuestion.push(action.payload);
          }

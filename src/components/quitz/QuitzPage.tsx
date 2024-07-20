@@ -1,18 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import '../../scss/pages/Quitz.scss'
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { addFailedQuestion, leftQuestion, removePassedQuestion, setTotalCounts } from '../../redux/slice/quitzSlice';
 import { useEffect, useRef, useState } from 'react';
 import { ISection } from '../dashboard/Dashboard';
-import { RootState } from '../../redux';
+import { useAppSelector } from '../../utils/hooks';
 
 const QuitzPage: React.FC = () => {
 
    const dispatch = useDispatch();
 
-   const section: ISection = useSelector((state: RootState) => state.quitz.currentSection);
+   const section: ISection | null = useAppSelector(state => state.quitz.currentSection);
    
-   const { totalCounts, failedQuestion } = useSelector((state: RootState) => state.quitz);
+   const { totalCounts, failedQuestion } = useAppSelector(state => state.quitz);
 
    const [isComplete, setIsComplete] = useState(false);
    const [currVal, setCurrVal] = useState(0);
@@ -23,7 +23,7 @@ const QuitzPage: React.FC = () => {
    const activeIndexRef = useRef(1);
 
    const questionPassed = () => {
-      if (section.questions.length - 1 > 0) {
+      if (section && section.questions.length - 1 > 0) {
          dispatch(removePassedQuestion({ id: section.questions[0].id }));
          activeIndexRef.current = activeIndexRef.current + 1;
       } else {
@@ -33,13 +33,15 @@ const QuitzPage: React.FC = () => {
    }
 
    const questionFailed = () => {
-      dispatch(leftQuestion());
-      dispatch(addFailedQuestion(section.questions[0]));
-      setFlipped(false);
+      if (section) {
+         dispatch(leftQuestion());
+         dispatch(addFailedQuestion(section.questions[0]));
+         setFlipped(false);
+      }
    }
 
    const checkAnswer = () => {
-      if(section.questions[0].answer){
+      if (section && section.questions[0].answer){
          setFlipped(true);
       } else {
          questionFailed();

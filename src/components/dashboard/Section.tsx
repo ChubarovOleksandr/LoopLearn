@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { removeDoneSection, setNewSection } from '../../redux/slice/sectionsSlice';
-import { setCurrentSection } from '../../redux/slice/quitzSlice.ts';
+import { setCurrentSection } from '../../redux/slice/quitzSlice';
 import { ISection } from './Dashboard';
+import { useAppDispatch } from '../../utils/hooks';
 
 interface IProps {
    item: ISection,
@@ -16,7 +17,7 @@ interface IProps {
 
 const Section: React.FC<IProps> = ({ item }) => {
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
    const navigate = useNavigate();
    const optionsRef = useRef<HTMLDivElement | null>(null);
    const [isOptionsVisible, setIsOptionsVisible] = useState(false);
@@ -27,9 +28,11 @@ const Section: React.FC<IProps> = ({ item }) => {
    } 
 
    const onRemoveHandler = () => {
-      dispatch(removeDoneSection(item.id));
-      setIsOptionsVisible(false);
-      window.location.reload();
+      if (item.id) {
+         dispatch(removeDoneSection(item.id));
+         setIsOptionsVisible(false);
+         window.location.reload();
+      }
    }
    
    const onPlayHandler = () => {

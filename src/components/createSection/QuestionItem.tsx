@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { changeQuestion, removeAnswer, removeQuestion, setAnswer } from "../../redux/slice/sectionsSlice";
 import enterArrow from '../../assets/img/enter-arrow.png';
 import { IQuestion } from "../dashboard/Dashboard";
+import { useAppDispatch } from "../../utils/hooks";
 
 interface IProps {
    item: IQuestion,
@@ -12,7 +13,7 @@ interface IProps {
 
 const QuestionItem: React.FC<IProps> = ({ item, index }) => {
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
 
    const questionRef = useRef<HTMLTextAreaElement | null>(null);
    const answerRef = useRef<HTMLTextAreaElement | null>(null);

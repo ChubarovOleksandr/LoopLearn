@@ -5,9 +5,10 @@ import Section from './Section';
 import { useEffect } from 'react';
 import { setDataToLS } from '../../utils/LS';
 import { RootState } from '../../redux';
+import { useAppSelector } from '../../utils/hooks';
 
 export interface IQuestion {
-   answer: string,
+   answer?: string,
    id: number,
    questionText: string
 }
@@ -20,7 +21,7 @@ export interface ISection {
 
 const Dashboard: React.FC = () => {
 
-   const sections: ISection[] = useSelector((state: RootState) => state.section.doneSections);   
+   const sections: ISection[] = useAppSelector(state => state.section.doneSections);   
 
    useEffect(()=> {
       setDataToLS('sections', sections);

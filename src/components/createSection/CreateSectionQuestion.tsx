@@ -2,10 +2,11 @@ import autosize from "autosize";
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addQuestion } from "../../redux/slice/sectionsSlice";
+import { useAppDispatch } from "../../utils/hooks";
 
 const CreateSectionQuestion = () => {
 
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch();
 
    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 

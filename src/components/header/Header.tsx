@@ -1,13 +1,12 @@
 import '../../scss/pages/Header.scss';
 import blackCube from '../../assets/img/black-cube.png';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useRef } from 'react';
-import { RootState } from '../../redux';
+import { useAppSelector } from '../../utils/hooks';
 
 const Header = () => {
 
-   const sections = useSelector((state) => state.section.doneSections);
+   const sections = useAppSelector(state => state.section.doneSections);
    const isMounted = useRef(false);
 
    if(isMounted.current){

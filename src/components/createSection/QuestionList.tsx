@@ -2,10 +2,11 @@ import { useSelector } from "react-redux";
 import QuestionItem from "./QuestionItem";
 import { IQuestion } from "../dashboard/Dashboard";
 import { RootState } from "../../redux";
+import { useAppSelector } from "../../utils/hooks";
 
 const QuestionList = () => {
 
-   const questions: IQuestion[] = useSelector((state: RootState) => state.section.newSection.questions);
+   const questions: IQuestion[] = useAppSelector(state => state.section.newSection.questions);
 
    return (
       <>
