@@ -18,7 +18,8 @@ export const quitzSlice = createSlice({
    initialState,
    reducers: {
       setCurrentSection(state, action: PayloadAction<ISection>){
-         state.currentSection = action.payload;
+         const shuffledQuestions = [...action.payload.questions].sort(() => Math.random() - 0.5);
+        state.currentSection = {...action.payload, questions: shuffledQuestions};
       },
       removePassedQuestion(state, action: PayloadAction<{id: number}>) {
          if (state.currentSection) {

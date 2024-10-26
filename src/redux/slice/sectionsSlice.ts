@@ -6,7 +6,8 @@ const doneSections = getDataFromLS('sections');
 
 interface newSection {
    name: string,
-   questions: IQuestion[]
+   questions: IQuestion[],
+   showAnswerByDefault: boolean,
 }
 
 interface SectionState {
@@ -19,6 +20,7 @@ const initialState: SectionState = {
    newSection: {
       name: '',
       questions: [],
+      showAnswerByDefault: true,
    }
 };
 
@@ -59,9 +61,10 @@ export const sectionSlice = createSlice({
       saveSection(state, action: PayloadAction<ISection>) {    
          state.doneSections.push(action.payload);
          state.newSection = {
-            name: '',
-            questions: [],
-         }
+           name: "",
+           questions: [],
+           showAnswerByDefault: true,
+         };
       },
       setNewSection(state, action: PayloadAction<newSection>) {
          state.newSection = action.payload;
@@ -77,12 +80,29 @@ export const sectionSlice = createSlice({
       },
       clearNewSection(state) {
          state.newSection = {
-            name: '',
-            questions: []
-         }
+           name: "",
+           questions: [],
+           showAnswerByDefault: true,
+         };
+      },
+      toggleShowingAnswerByDefault(state) {
+        state.newSection.showAnswerByDefault = !state.newSection.showAnswerByDefault; 
       }
+
    }
 })
 
-export const { setSectionName, addQuestion, changeQuestion, removeQuestion, setAnswer, removeAnswer, saveSection, setNewSection,
-   removeDoneSection, updateSection, clearNewSection } = sectionSlice.actions;
+export const {
+  setSectionName,
+  addQuestion,
+  changeQuestion,
+  removeQuestion,
+  setAnswer,
+  removeAnswer,
+  saveSection,
+  setNewSection,
+  removeDoneSection,
+  updateSection,
+  clearNewSection,
+  toggleShowingAnswerByDefault,
+} = sectionSlice.actions;
