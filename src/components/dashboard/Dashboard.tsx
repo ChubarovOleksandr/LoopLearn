@@ -1,10 +1,8 @@
 // import Options from "./Options";
-import { useSelector } from 'react-redux';
 import '../../scss/pages/Dashboard.scss'
 import Section from './Section';
 import { useEffect } from 'react';
 import { setDataToLS } from '../../utils/LS';
-import { RootState } from '../../redux';
 import { useAppSelector } from '../../utils/hooks';
 
 export interface IQuestion {
@@ -16,7 +14,8 @@ export interface IQuestion {
 export interface ISection {
    id?: string,
    name: string,
-   questions: IQuestion[]
+   questions: IQuestion[],
+   showAnswerByDefault: boolean,
 }
 
 const Dashboard: React.FC = () => {
