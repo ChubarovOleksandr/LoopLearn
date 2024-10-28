@@ -12,19 +12,23 @@
          height: 4vw;
          width: 4vw;
       }
-      .header-button {
-         display: flex;
-         justify-content: space-around;
-         align-items: center;
-         background: $WhiteT-bg-color-black;
-         padding: 20px 25px;
-         color: $WhiteT-text-color-white;
-         border-radius: 50px;
-         font-family: $Montserat;
-         font-weight: 400;
-         font-size: 16px;
-         gap: 10px;
-         box-shadow: 4px 10px 15px $WhiteT-box-shadow-grey;
+      .headers__buttons {
+        display: flex;
+        gap: 20px;
+        .header-button {
+           display: flex;
+           justify-content: space-around;
+           align-items: center;
+           background: $WhiteT-bg-color-black;
+           padding: 20px 25px;
+           color: $WhiteT-text-color-white;
+           border-radius: 50px;
+           font-family: $Montserat;
+           font-weight: 400;
+           font-size: 16px;
+           gap: 10px;
+           box-shadow: 4px 10px 15px $WhiteT-box-shadow-grey;
+        }
       }
    }
 }

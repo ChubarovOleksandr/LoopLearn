@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom"
 import Layout from "./layouts/Layout"
-import './scss/App.scss';
 import Index from "./components/dashboard/Dashboard";
 import CreateSection from "./components/createSection/CreateSection";
 import QuitzPage from "./components/quitz/QuitzPage";
