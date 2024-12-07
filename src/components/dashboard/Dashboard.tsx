@@ -4,6 +4,7 @@ import Section from './Section';
 import { useEffect } from 'react';
 import { setDataToLS } from '../../utils/LS';
 import { useAppSelector } from '../../utils/hooks';
+import SelectMode from './SelectMode';
 
 export interface IQuestion {
    answer?: string,
@@ -30,6 +31,7 @@ const Dashboard: React.FC = () => {
       <main className="main">
          <div className="wrapper">
             {/* <Options /> */}
+            <SelectMode />
             {sections.length > 0 ?
                <div className="sections">
                   {sections.map(item => {

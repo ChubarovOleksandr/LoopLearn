@@ -1,56 +1,29 @@
 import play from "../../assets/img/play.png";
 import "../../scss/pages/Dashboard.scss";
 import more from "../../assets/img/ellipsis.png";
-import edit from "../../assets/img/edit.png";
-import trash from "../../assets/img/trash-bin.png";
-import download from "../../assets/img/export.png";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { removeDoneSection, setNewSection } from "../../redux/slice/sectionsSlice";
 import { setCurrentSection } from "../../redux/slice/quitzSlice";
 import { ISection } from "./Dashboard";
-import { useAppDispatch } from "../../utils/hooks";
-import { exportTextFile } from "../../utils/exportFile";
-import { getDataFromLS } from "../../utils/LS";
+import SectionOptions from "./SectionOptions";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux";
 
 interface IProps {
   item: ISection;
 }
 
 const Section: React.FC<IProps> = ({ item }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const optionsRef = useRef<HTMLDivElement | null>(null);
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
-
-  const onChangeHandler = () => {
-    dispatch(setNewSection(item));
-    navigate("/create");
-  };
-
-  const onExportHandler = () => {
-    const exportDataArrays = item.questions.map(question => {
-      if(question.answer){
-        return question.questionText + ' - ' + question.answer; 
-      }
-      return question.questionText
-    })
-
-    const exportDataSting = exportDataArrays.join('\n');
-    
-    exportTextFile(exportDataSting, item.name);
-  };
-
-  const onRemoveHandler = () => {
-    if (item.id) {
-      dispatch(removeDoneSection(item.id));
-      setIsOptionsVisible(false);
-      window.location.reload();
-    }
-  };
+  const selectedMode = useSelector((state: RootState) => state.global.selectedMode);
 
   const onPlayHandler = () => {
     dispatch(setCurrentSection(item));
+    navigate(selectedMode);
   };
 
   useEffect(() => {
@@ -77,20 +50,7 @@ const Section: React.FC<IProps> = ({ item }) => {
           <img src={more} alt="other-functions" />
         </button>
         {isOptionsVisible && (
-          <div className="options-body">
-            <button className="change" onClick={onChangeHandler}>
-              <img src={edit} alt="Change Icon" />
-              <span>Редактировать</span>
-            </button>
-            <button className="export" onClick={onExportHandler}>
-              <img src={download} alt="Export Icon" />
-              <span>Экспортировать</span>
-            </button>
-            <button className="remove" onClick={onRemoveHandler}>
-              <img src={trash} alt="Trash Icon" />
-              <span>Удалить</span>
-            </button>
-          </div>
+          <SectionOptions item={item} setIsOptionsVisible={setIsOptionsVisible} />
         )}
       </div>
       <div className="title">{item.name}</div>
@@ -101,9 +61,9 @@ const Section: React.FC<IProps> = ({ item }) => {
           })}
         </ul>
       </div>
-      <NavLink to="quitz" onClick={() => onPlayHandler()} className="play">
+      <button onClick={() => onPlayHandler()} className="play">
         <img src={play} alt="play" />
-      </NavLink>
+      </button>
     </div>
   );
 };

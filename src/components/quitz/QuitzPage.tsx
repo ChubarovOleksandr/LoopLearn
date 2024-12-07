@@ -60,6 +60,8 @@ const QuitzPage: React.FC = () => {
 
   useEffect(() => {
     if (isComplete) {
+      console.log('Отвечено не правильно:', failedQuestion.length);
+      console.log('Общее кол-во вопросов:', totalCounts)
       const val = Math.round((1 - failedQuestion.length / totalCounts) * 100);
       currVal !== val && setTimeout(setCurrVal, time, currVal + 1);
     }
