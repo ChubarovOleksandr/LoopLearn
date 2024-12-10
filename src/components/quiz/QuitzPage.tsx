@@ -1,22 +1,22 @@
 import { useDispatch } from "react-redux";
-import "../../scss/pages/Quitz.scss";
+import "../../scss/pages/quiz.scss";
 import { NavLink, Navigate } from "react-router-dom";
 import {
   addFailedQuestion,
   leftQuestion,
   removePassedQuestion,
   setTotalCounts,
-} from "../../redux/slice/quitzSlice";
+} from "../../redux/slice/quizSlice";
 import { useEffect, useRef, useState } from "react";
 import { ISection } from "../dashboard/Dashboard";
 import { useAppSelector } from "../../utils/hooks";
 
-const QuitzPage: React.FC = () => {
+const quizPage: React.FC = () => {
   const dispatch = useDispatch();
 
-  const section: ISection | null = useAppSelector((state) => state.quitz.currentSection);
+  const section: ISection | null = useAppSelector((state) => state.quiz.currentSection);
 
-  const { totalCounts, failedQuestion } = useAppSelector((state) => state.quitz);
+  const { failedQuestion } = useAppSelector((state) => state.quiz);
 
   const [isComplete, setIsComplete] = useState(false);
   const [currVal, setCurrVal] = useState(0);
@@ -72,7 +72,7 @@ const QuitzPage: React.FC = () => {
   }, []);
 
   return (
-    <main className="quitz">
+    <main className="quiz">
       <div className="container">
         <div className="title">
           {section.name} ({activeIndexRef.current}/{totalCounts})
@@ -112,4 +112,4 @@ const QuitzPage: React.FC = () => {
   );
 };
 
-export default QuitzPage;
+export default quizPage;

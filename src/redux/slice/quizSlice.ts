@@ -1,35 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IQuestion, ISection } from "../../components/dashboard/Dashboard";
 
-interface QuitzState {
+interface quizState {
   currentSection: ISection | null;
-  totalCounts: number;
   failedQuestion: IQuestion[];
+  complete: boolean;
+  flipped: boolean;
+  activeIndex: number;
+  isChecking: boolean;
 }
 
-const initialState: QuitzState = {
+const initialState: quizState = {
   currentSection: null,
-  totalCounts: 0,
   failedQuestion: [],
+  complete: false,
+  flipped: false,
+  activeIndex: 1,
+  isChecking: false,
 };
 
-export const quitzSlice = createSlice({
-  name: "quitzSlice",
+export const quizSlice = createSlice({
+  name: "quizSlice",
   initialState,
   reducers: {
+    changeIsChecking(state, action) {
+      state.isChecking = action.payload;
+    },
+    setComplete(state) {
+      state.complete = !state.complete;
+    },
+    changeFlipped(state) {
+      state.flipped = !state.flipped;
+    },
     setCurrentSection(state, action: PayloadAction<ISection>) {
       const shuffledQuestions = [...action.payload.questions].sort(() => Math.random() - 0.5);
       state.currentSection = { ...action.payload, questions: shuffledQuestions };
     },
     removePassedQuestion(state, action: PayloadAction<{ id: number }>) {
-      if (state.currentSection) {
+      if (state.currentSection && state.currentSection.questions.length - 1 > 0) {
         state.currentSection.questions = state.currentSection.questions.filter(
           (question) => question.id !== action.payload.id
         );
+      } else {
+        state.complete = true;
       }
-    },
-    setTotalCounts(state, action: PayloadAction<number>) {
-      state.totalCounts = action.payload;
     },
     leftQuestion(state) {
       if (state.currentSection) {
@@ -50,7 +64,9 @@ export const quitzSlice = createSlice({
 export const {
   setCurrentSection,
   removePassedQuestion,
-  setTotalCounts,
   leftQuestion,
   addFailedQuestion,
-} = quitzSlice.actions;
+  setComplete,
+  changeFlipped,
+  changeIsChecking,
+} = quizSlice.actions;

@@ -2,12 +2,12 @@ import play from "../../assets/img/play.png";
 import "../../scss/pages/Dashboard.scss";
 import more from "../../assets/img/ellipsis.png";
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { setCurrentSection } from "../../redux/slice/quitzSlice";
+import { useNavigate } from "react-router-dom";
 import { ISection } from "./Dashboard";
 import SectionOptions from "./SectionOptions";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../utils/hooks";
+import { setCurrentSection } from "../../redux/slice/quizSlice";
 
 interface IProps {
   item: ISection;
@@ -19,11 +19,11 @@ const Section: React.FC<IProps> = ({ item }) => {
 
   const optionsRef = useRef<HTMLDivElement | null>(null);
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
-  const selectedMode = useSelector((state: RootState) => state.global.selectedMode);
+  const selectedMode = useAppSelector(state => state.global.selectedMode);
 
   const onPlayHandler = () => {
     dispatch(setCurrentSection(item));
-    navigate(selectedMode);
+    navigate('quiz/' + selectedMode);
   };
 
   useEffect(() => {

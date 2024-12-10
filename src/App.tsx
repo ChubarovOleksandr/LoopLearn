@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom"
 import Layout from "./layouts/Layout"
 import Index from "./components/dashboard/Dashboard";
 import CreateSection from "./components/createSection/CreateSection";
-import QuitzPage from "./components/quitz/QuitzPage";
+import QuizPage from './components/quiz/default/QuizPage';
 
 const App: React.FC = () => {
 
@@ -13,7 +13,7 @@ const App: React.FC = () => {
             <Route element={<Layout />}>
                <Route index element={<Index />} />
                <Route path="create" element={<CreateSection />} />
-               <Route path="quitz" element={<QuitzPage />} />
+               <Route path="quiz/default" element={<QuizPage />} />
             </Route>
          </Routes>
       </>

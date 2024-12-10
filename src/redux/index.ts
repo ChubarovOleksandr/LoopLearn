@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { sectionSlice } from './slice/sectionsSlice';
-import { quitzSlice } from './slice/quitzSlice';
 import { globalSlice } from './slice/globalSlice';
+import { quizSlice } from './slice/quizSlice';
 
 const store = configureStore({
    reducer: {
       global: globalSlice.reducer,
       section: sectionSlice.reducer,
-      quitz: quitzSlice.reducer,
+      quiz: quizSlice.reducer,
    }
 })
 
