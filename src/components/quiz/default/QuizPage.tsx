@@ -1,28 +1,44 @@
-import "../../../scss/pages/Quitz.scss";
-import { useRef, useState } from "react";
-import { useAppSelector } from "../../../utils/hooks";
+import "../../../scss/pages/Quiz.scss";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../utils/hooks";
 import { ISection } from "../../dashboard/Dashboard";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
+import { setTotalCounts } from "../../../redux/slice/quizSlice";
 
 const QuizPage: React.FC = () => {
-  const section: ISection | null = useAppSelector((state) => state.quiz.currentSection);
-  const { flipped, complete, isChecking } = useAppSelector((state) => state.quiz);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const activeIndexRef = useRef(1);
+  const section: ISection | null = useAppSelector((state) => state.quiz.modifiedSection);
+  const { flipped, isChecking, totalCounts, complete } = useAppSelector((state) => state.quiz);
 
-  if (!section || !section.questions || section.questions.length == 0) {
-    return <Navigate to={"/"} />;
-  }
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  if (complete) return <Navigate to={"/result"} />;
-
+  if (!section?.questions?.length) return <Navigate to={"/"} />;
+  
+  useEffect(() => {
+    if (!section?.questions?.length) {
+      navigate('result');
+    } else {
+      dispatch(setTotalCounts(section.questions.length));
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (totalCounts > 0 && section.questions.length > 0) {
+      setActiveIndex(totalCounts - section.questions.length);
+    }
+  }, [totalCounts, section.questions.length]);
+  
+  if (complete) return <Navigate to={"result"} />;
+  
   return (
     <main className="quiz">
       <div className="container">
         <span className="title">
-          {section.name} ({activeIndexRef.current}/{section.questions.length})
+          {section.name} ({activeIndex + 1}/{totalCounts})
         </span>
         <div className={`card ${flipped ? "flipped" : ""}`}>
           <CardFront question={section.questions[0]} />

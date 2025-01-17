@@ -8,21 +8,30 @@ interface IProps {
 }
 
 const CardBack = ({ question, isChecking }: IProps) => {
+  
+  const renderButtons = () => {
+    if (!question.answer) {
+      return <QuestionFailed question={question} text={"Следующий вопрос"} />;
+    }
+
+    if (isChecking) {
+      return (
+        <>
+          <QuestionPassed question={question} text={"Знал"} withPause={true} />
+          <QuestionFailed question={question} text={"Не знал"} />
+        </>
+      );
+    }
+
+    return <QuestionFailed question={question} text={"Следующий вопрос"} />;
+  };
+
   return (
     <div className="card-back">
-      <div className="question">{question.answer}</div>
-      <div className="buttons">
-        {isChecking ?
-        <>
-        <QuestionPassed question={question} text={"Знал"} withPause={true}/>
-        <QuestionFailed question={question} text={"Не знал"} />
-        </>
-        :
-        <QuestionFailed question={question} text={"Следующий вопрос"}/>
-        }
-      </div>
+      <div className="question">{question.answer || "Вы не указали ответ на этот вопрос"}</div>
+      <div className="buttons">{renderButtons()}</div>
     </div>
   );
 };
- 
+
 export default CardBack;
