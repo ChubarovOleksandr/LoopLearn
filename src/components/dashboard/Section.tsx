@@ -7,7 +7,7 @@ import { ISection } from "./Dashboard";
 import SectionOptions from "./SectionOptions";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../utils/hooks";
-import { setCurrentSection } from "../../redux/slice/quizSlice";
+import { setOriginSection } from "../../redux/slice/quizSlice";
 
 interface IProps {
   item: ISection;
@@ -22,7 +22,7 @@ const Section: React.FC<IProps> = ({ item }) => {
   const selectedMode = useAppSelector(state => state.global.selectedMode);
 
   const onPlayHandler = () => {
-    dispatch(setCurrentSection(item));
+    dispatch(setOriginSection(item));
     navigate('quiz/' + selectedMode);
   };
 

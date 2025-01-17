@@ -46,21 +46,14 @@ main.quiz {
       }
     }
     .buttons {
-      button {
-        transition: all .3s;
-      }
-      a {
-        border-radius: 25px;
-        transition: all 0.4s;
-        font-weight: 400;
-        background: $WhiteT-bg-color-black;
-        border: 2px solid $WhiteT-bg-color-black;
-        color: $WhiteT-text-color-white;
-        &:hover {
-          background: none;
-          border: 2px solid $WhiteT-bg-color-grey;
-          color: $WhiteT-text-color-black;
-          transition: all 0.6s;
+      &:has(a) {
+        display: flex;
+        justify-content: center;
+        button, a {
+          transition: all .3s;
+          &:hover {
+            color: $WhiteT-bg-color-black-grey;
+          }
         }
       }
       button,
@@ -70,7 +63,7 @@ main.quiz {
         font-family: $Montserat;
         font-size: 18px;
         padding: 20px 20px;
-        transition: all 0.3s;
+        transition: all .3s;
       }
       .confirm:hover {
         color: $WhiteT-bg-color-add-hover;

@@ -2,8 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IQuestion, ISection } from "../../components/dashboard/Dashboard";
 
 interface quizState {
-  currentSection: ISection | null;
+  originSection: ISection | null;
+  modifiedSection: ISection | null;
   failedQuestion: IQuestion[];
+  totalCounts: number,
   complete: boolean;
   flipped: boolean;
   activeIndex: number;
@@ -11,8 +13,10 @@ interface quizState {
 }
 
 const initialState: quizState = {
-  currentSection: null,
+  originSection: null,
+  modifiedSection: null,
   failedQuestion: [],
+  totalCounts: 0,
   complete: false,
   flipped: false,
   activeIndex: 1,
@@ -26,19 +30,20 @@ export const quizSlice = createSlice({
     changeIsChecking(state, action) {
       state.isChecking = action.payload;
     },
-    setComplete(state) {
-      state.complete = !state.complete;
-    },
     changeFlipped(state) {
       state.flipped = !state.flipped;
     },
-    setCurrentSection(state, action: PayloadAction<ISection>) {
+    setOriginSection(state, action) {
+      state.originSection = action.payload;
+      state.modifiedSection = action.payload;
+    },
+    setModifiedSection(state, action: PayloadAction<ISection>) {
       const shuffledQuestions = [...action.payload.questions].sort(() => Math.random() - 0.5);
-      state.currentSection = { ...action.payload, questions: shuffledQuestions };
+      state.modifiedSection = { ...action.payload, questions: shuffledQuestions };
     },
     removePassedQuestion(state, action: PayloadAction<{ id: number }>) {
-      if (state.currentSection && state.currentSection.questions.length - 1 > 0) {
-        state.currentSection.questions = state.currentSection.questions.filter(
+      if (state.modifiedSection && state.modifiedSection.questions.length - 1 > 0) {
+        state.modifiedSection.questions = state.modifiedSection.questions.filter(
           (question) => question.id !== action.payload.id
         );
       } else {
@@ -46,10 +51,10 @@ export const quizSlice = createSlice({
       }
     },
     leftQuestion(state) {
-      if (state.currentSection) {
-        const firstEl = state.currentSection.questions.shift();
+      if (state.modifiedSection) {
+        const firstEl = state.modifiedSection.questions.shift();
         if (firstEl) {
-          state.currentSection.questions.push(firstEl);
+          state.modifiedSection.questions.push(firstEl);
         }
       }
     },
@@ -58,15 +63,29 @@ export const quizSlice = createSlice({
         state.failedQuestion.push(action.payload);
       }
     },
+    setTotalCounts(state, action: PayloadAction<number>) {
+      state.totalCounts = action.payload;
+    },
+    resetState(state) {
+      state.modifiedSection = null;
+      state.failedQuestion = [];
+      state.totalCounts = 0;
+      state.complete = false;
+      state.flipped = false;
+      state.activeIndex = 1;
+      state.isChecking = false;
+    }
   },
 });
 
 export const {
-  setCurrentSection,
+  setModifiedSection,
   removePassedQuestion,
   leftQuestion,
+  setOriginSection,
   addFailedQuestion,
-  setComplete,
   changeFlipped,
   changeIsChecking,
+  setTotalCounts,
+  resetState
 } = quizSlice.actions;
