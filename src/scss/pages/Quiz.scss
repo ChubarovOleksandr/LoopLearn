@@ -41,6 +41,9 @@ main.quiz {
         height: 100%;
         backface-visibility: hidden;
       }
+      .card-front {
+        transform: rotateY(0deg);
+      }
       .card-back {
         transform: rotateY(180deg);
       }
