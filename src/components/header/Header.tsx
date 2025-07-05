@@ -5,7 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
 import { useAppSelector } from '../../utils/hooks';
 import ImportButton from './ImportButton';
-import { srcThemeSwapper } from '../srcThemeSwapper';
+import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
 
 const Header = () => {
   const isMounted = useRef(false);

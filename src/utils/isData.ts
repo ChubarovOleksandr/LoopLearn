@@ -1,0 +1,1 @@
+export const isNotEmptyArray = <T> (value: unknown): value is T[] => Array.isArray(value) && value.length > 0;

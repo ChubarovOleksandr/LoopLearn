@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IQuestion, ISection } from "../../components/dashboard/Dashboard";
+import { QuestionInterface, SectionInterface } from '../../pages/dashboard/interfaces';
 
 interface quizState {
-  originSection: ISection | null;
-  modifiedSection: ISection | null;
-  failedQuestion: IQuestion[];
+  originSection: SectionInterface | null;
+  modifiedSection: SectionInterface | null;
+  failedQuestion: QuestionInterface[];
   totalCounts: number,
   complete: boolean;
   flipped: boolean;
@@ -37,7 +37,7 @@ export const quizSlice = createSlice({
       state.originSection = action.payload;
       state.modifiedSection = action.payload;
     },
-    setModifiedSection(state, action: PayloadAction<ISection>) {
+    setModifiedSection(state, action: PayloadAction<SectionInterface>) {
       const shuffledQuestions = [...action.payload.questions].sort(() => Math.random() - 0.5);
       state.modifiedSection = { ...action.payload, questions: shuffledQuestions };
     },
@@ -58,7 +58,7 @@ export const quizSlice = createSlice({
         }
       }
     },
-    addFailedQuestion(state, action: PayloadAction<IQuestion>) {
+    addFailedQuestion(state, action: PayloadAction<QuestionInterface>) {
       if (!state.failedQuestion.some((question) => question.id === action.payload.id)) {
         state.failedQuestion.push(action.payload);
       }

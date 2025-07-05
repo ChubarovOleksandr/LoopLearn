@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
 import { changeFlipped, removePassedQuestion } from "../../../redux/slice/quizSlice";
-import { IQuestion } from "../../dashboard/Dashboard";
+import { QuestionInterface } from '../../dashboard/interfaces';
 
-interface IProps {
+interface Props {
   text: string;
-  question: IQuestion;
+  question: QuestionInterface;
   withPause: boolean
 }
 
-const QuestionPassed = ({ text, question, withPause }: IProps) => {
+const QuestionPassed = ({ text, question, withPause }: Props) => {
   const dispatch = useDispatch();
 
   const questionPassed = () => {

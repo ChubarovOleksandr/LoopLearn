@@ -8,16 +8,16 @@ import {
 } from '../../redux/slice/sectionsSlice';
 import whiteArrowIcon from '../../assets/img/white-enter-arrow.png';
 import blackArrowIcon from '../../assets/img/black-enter-arrow.png';
-import { IQuestion } from '../dashboard/Dashboard';
 import { useAppDispatch } from '../../utils/hooks';
-import { srcThemeSwapper } from '../srcThemeSwapper';
+import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import { QuestionInterface } from '../dashboard/interfaces';
 
-interface IProps {
-  item: IQuestion;
+interface Props {
+  item: QuestionInterface;
   isAnswerShow: boolean;
 }
 
-const QuestionItem = ({ item, isAnswerShow }: IProps) => {
+const QuestionItem = ({ item, isAnswerShow }: Props) => {
   const dispatch = useAppDispatch();
 
   const questionRef = useRef<HTMLTextAreaElement | null>(null);

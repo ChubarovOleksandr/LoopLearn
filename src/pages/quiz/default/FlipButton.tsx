@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { changeFlipped, changeIsChecking } from "../../../redux/slice/quizSlice";
+import { useDispatch } from 'react-redux';
+import { changeFlipped, changeIsChecking } from '../../../redux/slice/quizSlice';
 
-interface IProps {
-  text: string
+interface Props {
+  text: string;
 }
 
-const FlipButton = ({ text }: IProps) => {
+const FlipButton = ({ text }: Props) => {
   const dispatch = useDispatch();
 
   const questionFailed = () => {

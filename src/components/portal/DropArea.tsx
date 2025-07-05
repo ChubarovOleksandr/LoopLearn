@@ -3,10 +3,10 @@ import '../../scss/components/DropArea.scss';
 import blackCloseIcon from '../../assets/img/black-close.png';
 import whiteCloseIcon from '../../assets/img/white-close.png';
 import { useAppDispatch } from '../../utils/hooks';
-import { IQuestion } from '../dashboard/Dashboard';
 import { saveSection } from '../../redux/slice/sectionsSlice';
 import { v4 as uuidv4 } from 'uuid';
-import { srcThemeSwapper } from '../srcThemeSwapper';
+import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import { QuestionInterface } from '../../pages/dashboard/interfaces';
 
 interface DropAreaProps {
   onClose: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,7 +31,7 @@ const DropArea = ({ onClose }: DropAreaProps) => {
   const processText = (text: string, fileName: string) => {
     const questionsArray = text.split('\n').map((item, index) => {
       const pairArray = item.split(' - ');
-      const returnedValue: IQuestion = { questionText: pairArray[0], id: index };
+      const returnedValue: QuestionInterface = { questionText: pairArray[0], id: index };
       if (pairArray[1]) {
         returnedValue.answer = pairArray[1];
       }

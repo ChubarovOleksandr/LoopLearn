@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getDataFromLS } from "../../utils/LS";
-import { IQuestion, ISection } from "../../components/dashboard/Dashboard";
+import { QuestionInterface, SectionInterface } from '../../pages/dashboard/interfaces';
 
 const doneSections = getDataFromLS('sections');
 
 interface newSection {
    name: string,
-   questions: IQuestion[],
+   questions: QuestionInterface[],
    showAnswerByDefault: boolean,
 }
 
 interface SectionState {
-   doneSections: ISection[],
+   doneSections: SectionInterface[],
    newSection: newSection
 }
 
@@ -58,7 +58,7 @@ export const sectionSlice = createSlice({
             }
          });
       },
-      saveSection(state, action: PayloadAction<ISection>) {    
+      saveSection(state, action: PayloadAction<SectionInterface>) {    
          state.doneSections.push(action.payload);
          state.newSection = {
            name: "",
@@ -72,7 +72,7 @@ export const sectionSlice = createSlice({
       removeDoneSection(state, action: PayloadAction<string>) {         
          state.doneSections = state.doneSections.filter(section => section.id !== action.payload);
       },
-      updateSection(state, action: PayloadAction<ISection>) {
+      updateSection(state, action: PayloadAction<SectionInterface>) {
          const sectionIndex = state.doneSections.findIndex(section => section.id === action.payload.id);
          if (sectionIndex !== -1) {
             state.doneSections[sectionIndex] = action.payload;

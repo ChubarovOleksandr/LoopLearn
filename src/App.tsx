@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './layouts/Layout';
-import Index from './components/dashboard/Dashboard';
-import CreateSection from './components/createSection/CreateSection';
-import QuizPage from './components/quiz/default/QuizPage';
-import ResultPage from './components/quiz/default/ResultPage';
+import Index from './pages/dashboard/Dashboard';
+import CreateSection from './pages/createSection/CreateSection';
+import QuizPage from './pages/quiz/default/QuizPage';
+import ResultPage from './pages/quiz/default/ResultPage';
 
 const App: React.FC = () => (
   <>

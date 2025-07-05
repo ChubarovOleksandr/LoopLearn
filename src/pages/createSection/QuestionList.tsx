@@ -1,10 +1,10 @@
 import QuestionItem from './QuestionItem'
-import { IQuestion } from "../dashboard/Dashboard";
 import { useAppSelector } from "../../utils/hooks";
+import { QuestionInterface } from '../dashboard/interfaces';
 
 const QuestionList = () => {
 
-   const questions: IQuestion[] = useAppSelector(state => state.section.newSection.questions);
+   const questions: QuestionInterface[] = useAppSelector(state => state.section.newSection.questions);
    const isAnswerShow = useAppSelector((state) => state.section.newSection.showAnswerByDefault); 
 
    return (

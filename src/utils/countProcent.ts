@@ -1,9 +1,9 @@
 import React from 'react';
-import { IQuestion } from '../components/dashboard/Dashboard';
+import { QuestionInterface } from '../pages/dashboard/interfaces';
 
 interface CountPercentPropsInterface {
   totalCounts: number;
-  failedQuestion: IQuestion[];
+  failedQuestion: QuestionInterface[];
   currVal: number;
   setCurrVal: React.Dispatch<React.SetStateAction<number>>;
   time: number;

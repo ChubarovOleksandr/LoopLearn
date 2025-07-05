@@ -6,25 +6,13 @@ import { setDataToLS } from '../../utils/LS';
 import { useAppSelector } from '../../utils/hooks';
 import SelectMode from './SelectMode';
 import { ThemeToggleButton } from './ThemeToggleButton';
-
-export interface IQuestion {
-  answer?: string;
-  id: number;
-  questionText: string;
-}
-
-export interface ISection {
-  id?: string;
-  name: string;
-  questions: IQuestion[];
-  showAnswerByDefault: boolean;
-}
+import { SectionInterface } from './interfaces';
 
 const Dashboard: React.FC = () => {
-  const sections: ISection[] = useAppSelector(state => state.section.doneSections);
+  const sections: SectionInterface[] = useAppSelector(state => state.section.doneSections);
 
   useEffect(() => {
-    setDataToLS('sections', sections);
+    setDataToLS<SectionInterface[]>('sections', sections);
   }, [sections]);
 
   return (

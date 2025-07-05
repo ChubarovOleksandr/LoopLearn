@@ -1,17 +1,17 @@
 import "../../../scss/pages/Quiz.scss";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../utils/hooks";
-import { ISection } from "../../dashboard/Dashboard";
 import { Navigate, useNavigate } from "react-router-dom";
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
 import { setTotalCounts } from "../../../redux/slice/quizSlice";
+import { SectionInterface } from '../../dashboard/interfaces';
 
 const QuizPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const section: ISection | null = useAppSelector((state) => state.quiz.modifiedSection);
+  const section: SectionInterface | null = useAppSelector((state) => state.quiz.modifiedSection);
   const { flipped, isChecking, totalCounts, complete } = useAppSelector((state) => state.quiz);
 
   const [activeIndex, setActiveIndex] = useState(0);

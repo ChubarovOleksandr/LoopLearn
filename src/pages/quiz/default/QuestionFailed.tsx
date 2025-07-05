@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import { IQuestion } from "../../dashboard/Dashboard";
 import { addFailedQuestion, changeFlipped, changeIsChecking, leftQuestion } from "../../../redux/slice/quizSlice";
+import { QuestionInterface } from '../../dashboard/interfaces';
 
-interface IProps {
+interface Props {
   text: string;
-  question: IQuestion;
+  question: QuestionInterface;
 }
 
-const QuestionFailed = ({ text, question }: IProps) => {
+const QuestionFailed = ({ text, question }: Props) => {
   const dispatch = useDispatch();
 
   const questionFailed = () => {

@@ -1,13 +1,13 @@
-import { IQuestion } from "../../dashboard/Dashboard";
 import QuestionFailed from "./QuestionFailed";
 import QuestionPassed from "./QuestionPassed";
+import { QuestionInterface } from '../../dashboard/interfaces';
 
-interface IProps {
-  question: IQuestion;
+interface Props {
+  question: QuestionInterface;
   isChecking: boolean;
 }
 
-const CardBack = ({ question, isChecking }: IProps) => {
+const CardBack = ({ question, isChecking }: Props) => {
   
   const renderButtons = () => {
     if (!question.answer) {
