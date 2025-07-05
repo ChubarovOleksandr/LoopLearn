@@ -1,12 +1,12 @@
 // import Options from "./Options";
-import '../../scss/pages/Dashboard.scss';
-import Section from './Section';
 import React, { useEffect } from 'react';
-import { setDataToLS } from '../../utils/LS';
 import { useAppSelector } from '../../utils/hooks';
+import { setDataToLS } from '../../utils/LS';
+import { SectionInterface } from './interfaces';
+import Section from './Section';
 import SelectMode from './SelectMode';
 import { ThemeToggleButton } from './ThemeToggleButton';
-import { SectionInterface } from './interfaces';
+import '../../scss/pages/Dashboard.scss';
 
 const Dashboard: React.FC = () => {
   const sections: SectionInterface[] = useAppSelector(state => state.section.doneSections);

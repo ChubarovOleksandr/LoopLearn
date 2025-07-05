@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import '../../scss/components/DropArea.scss';
+import { v4 as uuidv4 } from 'uuid';
 import blackCloseIcon from '../../assets/img/black-close.png';
 import whiteCloseIcon from '../../assets/img/white-close.png';
-import { useAppDispatch } from '../../utils/hooks';
-import { saveSection } from '../../redux/slice/sectionsSlice';
-import { v4 as uuidv4 } from 'uuid';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
 import { QuestionInterface } from '../../pages/dashboard/interfaces';
+import { saveSection } from '../../redux/slice/sectionsSlice';
+import { useAppDispatch } from '../../utils/hooks';
+import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import '../../scss/components/DropArea.scss';
 
 interface DropAreaProps {
   onClose: React.Dispatch<React.SetStateAction<boolean>>;

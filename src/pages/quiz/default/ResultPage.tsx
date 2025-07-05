@@ -1,23 +1,23 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../utils/hooks";
-import { countPercent } from "../../../utils/countProcent";
-import { useEffect, useState } from "react";
-import { resetState, setOriginSection } from "../../../redux/slice/quizSlice";
+import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
+import { countPercent } from '../../../utils/countProcent';
+import { resetState, setOriginSection } from '../../../redux/slice/quizSlice';
 
 const ResultPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { totalCounts, failedQuestion, originSection } = useAppSelector((state) => state.quiz);
-  const selectedMode = useAppSelector((state) => state.global.selectedMode);
+  const { totalCounts, failedQuestion, originSection } = useAppSelector(state => state.quiz);
+  const selectedMode = useAppSelector(state => state.global.selectedMode);
 
   const [currVal, setCurrVal] = useState(0);
 
   const onRestart = async () => {
     const item = originSection;
-      await dispatch(resetState());
-      await dispatch(setOriginSection(item));
-      navigate("/quiz/" + selectedMode);
+    await dispatch(resetState());
+    await dispatch(setOriginSection(item));
+    navigate('/quiz/' + selectedMode);
   };
 
   useEffect(() => {

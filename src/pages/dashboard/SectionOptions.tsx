@@ -1,16 +1,16 @@
 import React from 'react';
-import whiteEditIcon from '../../assets/img/white-edit.png';
-import blackEditIcon from '../../assets/img/black-edit.png';
-import whiteTrashIcon from '../../assets/img/white-trash-bin.png';
-import blackTrashIcon from '../../assets/img/black-trash-bin.png';
-import whiteExportIcon from '../../assets/img/white-export.png';
-import blackExportIcon from '../../assets/img/black-export.png';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../utils/hooks';
+import blackEditIcon from '../../assets/img/black-edit.png';
+import blackExportIcon from '../../assets/img/black-export.png';
+import blackTrashIcon from '../../assets/img/black-trash-bin.png';
+import whiteEditIcon from '../../assets/img/white-edit.png';
+import whiteExportIcon from '../../assets/img/white-export.png';
+import whiteTrashIcon from '../../assets/img/white-trash-bin.png';
 import { removeDoneSection, setNewSection } from '../../redux/slice/sectionsSlice';
 import { exportTextFile } from '../../utils/exportFile';
-import { SectionInterface } from './interfaces';
+import { useAppDispatch } from '../../utils/hooks';
 import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import { SectionInterface } from './interfaces';
 
 interface PropsInterface {
   item: SectionInterface;

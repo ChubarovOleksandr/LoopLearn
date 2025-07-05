@@ -1,7 +1,7 @@
+import { QuestionInterface } from '../../dashboard/interfaces';
 import CheckAnswer from './CheckAnswer';
 import FlipButton from './FlipButton';
 import QuestionPassed from './QuestionPassed';
-import { QuestionInterface } from '../../dashboard/interfaces';
 
 interface Props {
   question: QuestionInterface;

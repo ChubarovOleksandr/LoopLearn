@@ -1,20 +1,20 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface GlobalSlice {
-  selectedMode: string
+  selectedMode: string;
 }
 
 const initialState: GlobalSlice = {
-  selectedMode: "default",
+  selectedMode: 'default',
 };
 
 export const globalSlice = createSlice({
-  name: "globalSlice",
+  name: 'globalSlice',
   initialState,
   reducers: {
     setSelectedMode(state, action) {
       state.selectedMode = action.payload;
-    }
+    },
   },
 });
 

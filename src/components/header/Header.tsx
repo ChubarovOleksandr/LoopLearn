@@ -1,11 +1,11 @@
-import '../../scss/pages/Header.scss';
+import { useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import blackCubeIcon from '../../assets/img/black-cube.png';
 import whiteCubeIcon from '../../assets/img/white-cube.png';
-import { NavLink, useLocation } from 'react-router-dom';
-import { useRef } from 'react';
 import { useAppSelector } from '../../utils/hooks';
-import ImportButton from './ImportButton';
 import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import ImportButton from './ImportButton';
+import '../../scss/pages/Header.scss';
 
 const Header = () => {
   const isMounted = useRef(false);

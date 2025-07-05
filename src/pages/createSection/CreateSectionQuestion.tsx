@@ -1,15 +1,15 @@
-import autosize from "autosize";
-import { useEffect, useRef } from "react";
-import { addQuestion, toggleShowingAnswerByDefault } from "../../redux/slice/sectionsSlice";
-import { useAppDispatch } from "../../utils/hooks";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux";
+import autosize from 'autosize';
+import { useEffect, useRef } from 'react';
+import { addQuestion, toggleShowingAnswerByDefault } from '../../redux/slice/sectionsSlice';
+import { useAppDispatch } from '../../utils/hooks';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
 
 const CreateSectionQuestion = () => {
   const dispatch = useAppDispatch();
 
   const isAnswerShowByDefault = useSelector(
-    (state: RootState) => state.section.newSection.showAnswerByDefault
+    (state: RootState) => state.section.newSection.showAnswerByDefault,
   );
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -17,10 +17,10 @@ const CreateSectionQuestion = () => {
   const onQuestionAdd = () => {
     if (textareaRef.current?.value) {
       dispatch(addQuestion(textareaRef.current.value));
-      textareaRef.current.value = "";
+      textareaRef.current.value = '';
       autosize.update(textareaRef.current);
     } else {
-      alert("Введите название задачи");
+      alert('Введите название задачи');
     }
   };
 
@@ -48,7 +48,10 @@ const CreateSectionQuestion = () => {
           checked={isAnswerShowByDefault}
           onChange={onToggleShowingAnswerByDefault}
         />
-        <label title="Отвечает за авт. наличие полей для ответа при создании" htmlFor="toggle-show"></label>
+        <label
+          title="Отвечает за авт. наличие полей для ответа при создании"
+          htmlFor="toggle-show"
+        ></label>
       </div>
     </div>
   );

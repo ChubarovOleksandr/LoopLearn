@@ -1,16 +1,16 @@
-import whitePlayIcon from '../../assets/img/white-play.png';
-import blackPlayIcon from '../../assets/img/black-play.png';
-import '../../scss/pages/Dashboard.scss';
-import whiteDotsIcon from '../../assets/img/white-dots.png';
-import blackDotsIcon from '../../assets/img/black-dots.png';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SectionOptions from './SectionOptions';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../utils/hooks';
+import { useNavigate } from 'react-router-dom';
+import blackDotsIcon from '../../assets/img/black-dots.png';
+import blackPlayIcon from '../../assets/img/black-play.png';
+import whiteDotsIcon from '../../assets/img/white-dots.png';
+import whitePlayIcon from '../../assets/img/white-play.png';
 import { setOriginSection } from '../../redux/slice/quizSlice';
-import { SectionInterface } from './interfaces';
+import { useAppSelector } from '../../utils/hooks';
 import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+import { SectionInterface } from './interfaces';
+import SectionOptions from './SectionOptions';
+import '../../scss/pages/Dashboard.scss';
 
 interface Props {
   item: SectionInterface;

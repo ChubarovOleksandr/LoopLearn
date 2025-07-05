@@ -1,6 +1,6 @@
-import { useState } from "react";
-import DropArea from "../portal/DropArea";
-import { createPortal } from "react-dom";
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import DropArea from '../portal/DropArea';
 
 const ImportButton = () => {
   const [showDropArea, setShowDropArea] = useState(false);
@@ -10,8 +10,7 @@ const ImportButton = () => {
       <button className="header-button" onClick={() => setShowDropArea(true)}>
         Загрузить
       </button>
-      {showDropArea &&
-        createPortal(<DropArea onClose={setShowDropArea} />, document.body)}
+      {showDropArea && createPortal(<DropArea onClose={setShowDropArea} />, document.body)}
     </>
   );
 };
