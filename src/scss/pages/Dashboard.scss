@@ -1,21 +1,29 @@
 // variables
-@import "../variables";
+@import "../variables/themes-variables.scss";
+@import "../variables/font-variables.scss";
 
-.wrapper {
-  height: 100%;
-}
-main.main {
-  height: 70dvh;
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+  }
+
   h1 {
-    width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 78px;
+    padding-top: 30vh;
     font-family: $Poppins;
     font-weight: 400;
-    color: $WhiteT-text-color-black;
+    color: var(--text-primary-color);
   }
 }
 
@@ -24,24 +32,42 @@ main.main {
   align-items: center;
   gap: 15px;
   margin: 30px 0;
-  font-family: $Montserat;
+  font-family: $Montserrat;
   font-size: 20px;
+
+  span {
+    color: var(--text-primary-color);
+  }
+
   .items {
     display: flex;
-    background:rgb(241, 241, 241);
+    position: relative;
+    border: 1px solid var(--border-primary-color);
     border-radius: 15px;
+
+    .selected-item-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 42px;
+      background: var(--bg-secondary-color);
+      border-radius: 15px;
+      z-index: 1;
+      transition: all .4s;
+    }
+
     button {
       border-radius: 15px;
-      background:rgb(241, 241, 241);
+      background: none;
       font-size: 18px;
+      z-index: 5;
       padding: 10px 15px;
       transition: all .3s;
-      &:hover {
-        background:rgb(219, 219, 219);
-      }
+      color: var(--text-primary-color);
     }
+
     button.selected {
-      background:rgb(180, 180, 180);
+      color: var(--text-secondary-color);
     }
   }
 }
@@ -53,17 +79,19 @@ main.main {
   flex-wrap: wrap;
   margin: 30px 0;
   gap: 3%;
+
   .section {
-    box-shadow: 0px 0px 20px rgb(180, 180, 180);
+    box-shadow: 0 0 20px rgb(180, 180, 180);
     margin: 20px 0;
-    border: 1px solid $WhiteT-bg-color-grey;
+    border: 1px solid var(--bg-tertiary-color);
     flex: 30%;
     max-width: 30%;
     text-align: center;
     border-radius: 20px;
-    background: $paper;
+    background: var(--bg-section-color);
     position: relative;
     padding-bottom: 10px;
+
     .options {
       opacity: 0;
       position: absolute;
@@ -74,25 +102,29 @@ main.main {
       align-items: center;
       background: none;
       transition: all 0.4s;
+
       img {
         width: 24px;
         height: 24px;
       }
     }
+
     .options.visible {
       opacity: 1;
     }
+
     .options-body {
       position: absolute;
-      background: $WhiteT-bg-color-white;
+      background: var(--bg-primary-color);
       top: 15%;
-      right: 0%;
+      right: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       border-radius: 10px;
       z-index: 10;
+
       button {
         border-radius: 10px;
         min-width: 160px;
@@ -102,40 +134,46 @@ main.main {
         align-items: center;
         padding: 15px 5px;
         background: none;
-        font-family: $Montserat;
+        font-family: $Montserrat;
         font-weight: 400;
         font-size: 14px;
+
         span {
           text-align: center;
           width: 100%;
         }
+
         img {
           margin: 0 9px;
           width: 22px;
           height: 22px;
         }
+
         &:hover {
-          background: $WhiteT-bg-color-white-grey;
+          background: var(--bg-primary-color);
         }
       }
     }
+
     .title {
       padding: 13px 0;
       font-size: 22px;
       font-weight: 600;
-      font-family: $Montserat;
-      background: $WhiteT-bg-color-black;
-      color: $WhiteT-text-color-white;
+      font-family: $Montserrat;
+      background: var(--bg-secondary-color);
+      color: var(--bg-primary-color);
       border-top-right-radius: 20px;
       border-top-left-radius: 20px;
     }
+
     .details {
       border-bottom-right-radius: 20px;
       border-bottom-left-radius: 20px;
       padding: 15px 0 5px 0;
       height: 200px;
       overflow-y: auto;
-      background: $paper;
+      background: var(--bg-section-color);
+
       &::-webkit-scrollbar {
         width: 5px;
         height: 10px;
@@ -146,27 +184,30 @@ main.main {
       }
 
       &::-webkit-scrollbar-thumb {
-        background: #000000;
+        background: var(--bg-primary-color);
         border-radius: 25px;
       }
 
       &::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
+
       li {
         padding: 3px 15px;
         font-size: 18px;
         font-weight: 400;
-        font-family: $Montserat;
+        font-family: $Montserrat;
         text-align: left;
         overflow-wrap: break-word;
         word-wrap: break-word;
+
         &:before {
           content: "-";
           padding-right: 10px;
         }
       }
     }
+
     .play {
       background: rgb(37, 37, 37);
       padding: 10px;
@@ -177,15 +218,41 @@ main.main {
       border-radius: 100%;
       transition: all 0.4s;
     }
+
     &:hover {
       .options {
         transition: opacity 0.4s;
         opacity: 1;
       }
+
       .play {
         transition: all 0.4s;
         opacity: 0.6;
       }
     }
+  }
+}
+
+.change-theme-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border-radius: 100px;
+
+  &.dark {
+    background: #000;
+    border: 2px solid #fff;
+  }
+
+  &.light {
+    border: 2px solid #000;
+  }
+
+  img {
+    width: 26px;
+    height: 26px;
   }
 }

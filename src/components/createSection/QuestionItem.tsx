@@ -1,17 +1,23 @@
-import autosize from "autosize";
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { changeQuestion, removeAnswer, removeQuestion, setAnswer } from "../../redux/slice/sectionsSlice";
-import enterArrow from '../../assets/img/enter-arrow.png';
-import { IQuestion } from "../dashboard/Dashboard";
-import { useAppDispatch } from "../../utils/hooks";
+import autosize from 'autosize';
+import { useEffect, useRef, useState } from 'react';
+import {
+  changeQuestion,
+  removeAnswer,
+  removeQuestion,
+  setAnswer,
+} from '../../redux/slice/sectionsSlice';
+import whiteArrowIcon from '../../assets/img/white-enter-arrow.png';
+import blackArrowIcon from '../../assets/img/black-enter-arrow.png';
+import { IQuestion } from '../dashboard/Dashboard';
+import { useAppDispatch } from '../../utils/hooks';
+import { srcThemeSwapper } from '../srcThemeSwapper';
 
 interface IProps {
   item: IQuestion;
   isAnswerShow: boolean;
 }
 
-const QuestionItem: React.FC<IProps> = ({ item, isAnswerShow }) => {  
+const QuestionItem = ({ item, isAnswerShow }: IProps) => {
   const dispatch = useAppDispatch();
 
   const questionRef = useRef<HTMLTextAreaElement | null>(null);
@@ -47,12 +53,18 @@ const QuestionItem: React.FC<IProps> = ({ item, isAnswerShow }) => {
         <textarea
           ref={questionRef}
           value={item.questionText}
-          className={isAnswerVisible ? "w500" : ""}
-          onChange={(e) => onChangeQuestion(e.target.value)}
+          className={isAnswerVisible ? 'w450' : ''}
+          onChange={e => onChangeQuestion(e.target.value)}
         />
-        {item.answer === undefined && isAnswerVisible === false && (
+        {item.answer === undefined && !isAnswerVisible && (
           <button onClick={() => setIsAnswerVisible(true)} className="question__add-answer">
-            <img src={enterArrow} alt="add answer" />
+            <img
+              src={srcThemeSwapper({
+                iconForWhiteTheme: blackArrowIcon,
+                iconForDarkTheme: whiteArrowIcon,
+              })}
+              alt="Добавить ответ"
+            />
           </button>
         )}
         <button onClick={onRemoveQuestion} className="question__remove">
@@ -65,7 +77,7 @@ const QuestionItem: React.FC<IProps> = ({ item, isAnswerShow }) => {
             <div className="corner-shape"></div>
           </div>
           <textarea
-            onChange={(event) => onAnswerChangeText(event.target.value)}
+            onChange={event => onAnswerChangeText(event.target.value)}
             ref={answerRef}
             value={item.answer || ''}
             rows={1}

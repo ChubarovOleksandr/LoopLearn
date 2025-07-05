@@ -1,6 +1,7 @@
 // variables
 
-@import "../variables";
+@import "../variables/font-variables.scss";
+@import "../variables/themes-variables.scss";
 
 .form {
   display: flex;
@@ -8,8 +9,10 @@
   align-items: center;
   flex-direction: column;
   padding: 10px 0;
+
   .highlighted {
     position: relative;
+
     &:before,
     &:after {
       content: "";
@@ -19,46 +22,62 @@
       width: 30%;
       border-radius: 5px;
       transform: translate(0, -50%);
-      background: $WhiteT-text-color-black;
+      background: var(--bg-secondary-color);
     }
+
     &:before {
       left: -10%;
     }
+
     &:after {
       right: -10%;
     }
   }
+
   .form__part {
     display: flex;
     flex-direction: column;
+
     input[type="text"] {
-      color: $WhiteT-text-color-black;
+      color: var(--text-primary-color);
       padding: 10px 10px 10px 20px;
       font-size: 20px;
-      border: 1px solid $paper;
-      box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
-      background: $WhiteT-bg-color-white-grey;
+      border: 1px solid var(--border-primary-color);
+      box-shadow: 0 0 1px var(--boxshadow-secondary-color);
+      background: var(--bg-primary-color);
       border-radius: 10px;
       opacity: 0.8;
       transition: opacity 0.4s;
       font-family: $Nunito;
       width: 550px;
       height: 45px;
+
       &:focus {
         transition: opacity 0.4s;
         opacity: 1;
       }
     }
+
     input[type="checkbox"] {
       opacity: 0;
       display: none;
       z-index: -1;
+
       &:checked:hover + label {
-        background: $WhiteT-bg-color-add-hover;
+        background: var(--success-color);
       }
+
       &:checked + label {
-        background: $WhiteT-bg-color-add;
+        background: var(--success-color);
+        border: 1px solid var(--success-color);
+
+        &:hover {
+          background: var(--success-hover-color);
+          border: 1px solid var(--success-hover-color);
+          transition: all 0.4s;
+        }
       }
+
       &:checked + label::before {
         background-size: 13px 16px;
         background-position: center center;
@@ -66,15 +85,17 @@
         background-image: url('../../assets/img/check.png');
       }
     }
+
     label {
       cursor: pointer;
       transition: background .2s ease-in;
       position: relative;
       height: 45px;
       width: 45px;
-      background: $WhiteT-bg-color-white-grey;
       border-radius: 5px;
-      box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
+      border: 1px solid var(--border-primary-color);
+      color: var(--text-accent-color);
+
       &::before {
         position: absolute;
         top: 50%;
@@ -86,10 +107,12 @@
       }
     }
   }
+
   .add-question {
     display: flex;
     align-items: center;
     gap: 10px;
+
     textarea {
       width: 450px;
       min-height: 45px;
@@ -97,33 +120,36 @@
       resize: none;
       height: auto;
       overflow-y: hidden;
-      color: $WhiteT-text-color-black;
+      color: var(--text-primary-color);
       padding: 10px 10px 10px 20px;
       font-size: 20px;
-      border: 1px solid $paper;
-      box-shadow: 0px 0px 5px $WhiteT-bg-color-black-grey;
-      background: $WhiteT-bg-color-white-grey;
+      border: 1px solid var(--border-primary-color);
+      box-shadow: 0 0 2px var(--boxshadow-secondary-color);
+      background: var(--bg-primary-color);
       border-radius: 10px;
       opacity: 0.8;
       font-family: $Nunito;
       transition: opacity 0.4s;
+
       &:focus {
         transition: opacity 0.4s;
         opacity: 1;
       }
     }
+
     button {
       border-radius: 5px;
       width: 45px;
       height: 45px;
-      background: $WhiteT-bg-color-add;
+      background: var(--success-color);
       transition: all 0.4s;
       font-size: 24px;
       font-family: $Poppins;
       font-weight: 400;
-      color: $WhiteT-text-color-white;
+      color: #fff;
+
       &:hover {
-        background: $WhiteT-bg-color-add-hover;
+        background: var(--success-hover-color);
         transition: all 0.4s;
       }
     }
