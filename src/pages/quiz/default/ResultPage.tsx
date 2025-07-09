@@ -20,7 +20,7 @@ const ResultPage = () => {
     const item = originSection;
     dispatch(resetState());
     dispatch(setOriginSection(item));
-    navigate(`${RoutesEnum.Quiz}/${selectedMode}`);
+    navigate(`/${RoutesEnum.Quiz}/${selectedMode}`);
   };
 
   useEffect(() => {

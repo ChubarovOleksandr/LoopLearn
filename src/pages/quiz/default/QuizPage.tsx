@@ -39,7 +39,7 @@ const QuizPage = () => {
   if (!isExist(section) || isEmptyArray(section.questions))
     return <Navigate to={RoutesEnum.Home} />;
 
-  if (complete) return <Navigate to={RoutesEnum.QuizDefaultResult} />;
+  if (complete) return <Navigate to={`/${RoutesEnum.QuizDefaultResult}`} />;
 
   return (
     <main className="quiz">
