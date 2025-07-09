@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
-import { countPercent } from '../../../utils/countProcent';
-import { resetState, setOriginSection } from '../../../redux/slice/quizSlice';
+
+import { countPercent } from '@utils/countProcent';
+import { useAppDispatch, useAppSelector } from '@utils/hooks';
+
+import { resetState, setOriginSection } from 'src/redux/slice/quizSlice';
 
 const ResultPage = () => {
   const dispatch = useAppDispatch();
@@ -15,14 +17,14 @@ const ResultPage = () => {
 
   const onRestart = async () => {
     const item = originSection;
-    await dispatch(resetState());
-    await dispatch(setOriginSection(item));
+    dispatch(resetState());
+    dispatch(setOriginSection(item));
     navigate('/quiz/' + selectedMode);
   };
 
   useEffect(() => {
     countPercent({ totalCounts, failedQuestion, currVal, setCurrVal, time: 10 });
-  }, [currVal]);
+  }, [currVal, failedQuestion, totalCounts]);
 
   return (
     <main className="quiz">

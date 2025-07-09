@@ -1,36 +1,41 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import { Navigate, useNavigate } from 'react-router-dom';
-import CardFront from './CardFront';
-import CardBack from './CardBack';
-import { setTotalCounts } from '../../../redux/slice/quizSlice';
-import { SectionInterface } from '../../dashboard/interfaces';
+
+import CardBack from '@pages/quiz/default/CardBack';
+import CardFront from '@pages/quiz/default/CardFront';
+import { useAppDispatch, useAppSelector } from '@utils/hooks';
+import { isEmptyArray, isExist, isNotEmptyArray } from '@utils/isData';
+
+import { setTotalCounts } from 'src/redux/slice/quizSlice';
+
 import '../../../scss/pages/Quiz.scss';
 
 const QuizPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const section: SectionInterface | null = useAppSelector(state => state.quiz.modifiedSection);
+  const section = useAppSelector(state => state.quiz.modifiedSection);
   const { flipped, isChecking, totalCounts, complete } = useAppSelector(state => state.quiz);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  if (!section?.questions?.length) return <Navigate to={'/'} />;
-
   useEffect(() => {
-    if (!section?.questions?.length) {
-      navigate('result');
-    } else {
-      dispatch(setTotalCounts(section.questions.length));
+    if (isExist(section)) {
+      if (isNotEmptyArray(section.questions)) {
+        dispatch(setTotalCounts(section.questions.length));
+      } else {
+        navigate('result');
+      }
     }
-  }, []);
+  }, [dispatch, navigate, section]);
 
   useEffect(() => {
-    if (totalCounts > 0 && section.questions.length > 0) {
+    if (totalCounts > 0 && isNotEmptyArray(section?.questions)) {
       setActiveIndex(totalCounts - section.questions.length);
     }
-  }, [totalCounts, section.questions.length]);
+  }, [totalCounts, section?.questions]);
+
+  if (!isExist(section) || isEmptyArray(section.questions)) return <Navigate to={'/'} />;
 
   if (complete) return <Navigate to={'result'} />;
 

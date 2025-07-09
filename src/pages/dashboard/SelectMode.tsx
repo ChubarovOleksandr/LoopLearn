@@ -1,7 +1,8 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux';
-import { setSelectedMode } from '../../redux/slice/globalSlice';
-import { useEffect, useRef, useState } from 'react';
+
+import { RootState } from 'src/redux';
+import { setSelectedMode } from 'src/redux/slice/globalSlice';
 
 const SelectMode = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,15 @@ const SelectMode = () => {
     }
   };
 
+  const modesArray = useMemo(
+    () => [
+      { value: 'default', label: 'Обычный' },
+      { value: 'reverse', label: 'Обратный' },
+      { value: 'input', label: 'Ввести ответ' },
+    ],
+    [],
+  );
+
   useEffect(() => {
     const selectedIndex = modesArray.findIndex(mode => mode.value === selectedMode);
     if (selectedIndex >= 0) {
@@ -38,13 +48,7 @@ const SelectMode = () => {
         });
       }
     }
-  }, [selectedMode]);
-
-  const modesArray = [
-    { value: 'default', label: 'Обычный' },
-    { value: 'reverse', label: 'Обратный' },
-    { value: 'input', label: 'Ввести ответ' },
-  ];
+  }, [modesArray, selectedMode]);
 
   return (
     <div className="select-mode">

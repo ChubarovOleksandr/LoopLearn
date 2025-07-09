@@ -1,19 +1,21 @@
-import { useDispatch } from "react-redux";
-import { changeFlipped, removePassedQuestion } from "../../../redux/slice/quizSlice";
-import { QuestionInterface } from '../../dashboard/interfaces';
+import { useDispatch } from 'react-redux';
+
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+
+import { changeFlipped, removePassedQuestion } from 'src/redux/slice/quizSlice';
 
 interface Props {
   text: string;
   question: QuestionInterface;
-  withPause: boolean
+  withPause: boolean;
 }
 
 const QuestionPassed = ({ text, question, withPause }: Props) => {
   const dispatch = useDispatch();
 
   const questionPassed = () => {
-    if(withPause){
-      dispatch(changeFlipped())
+    if (withPause) {
+      dispatch(changeFlipped());
       setTimeout(() => {
         dispatch(removePassedQuestion({ id: question.id }));
       }, 200);

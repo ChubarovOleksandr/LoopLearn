@@ -1,5 +1,5 @@
-import { ThemeEnum, themes } from '../context/ThemeContext';
-import { getDataFromLS } from './LS';
+import { ThemeEnum, themes } from '@context/ThemeContext';
+import { getDataFromLS } from '@utils/LS';
 
 export const getTheme = () => {
   const theme = getDataFromLS('theme');
