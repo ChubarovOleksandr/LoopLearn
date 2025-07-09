@@ -36,8 +36,6 @@ const CreateSectionQuestion = () => {
     }
   }, []);
 
-  console.log(111);
-
   return (
     <div className="form__part">
       <span>Добавьте вопросы</span>

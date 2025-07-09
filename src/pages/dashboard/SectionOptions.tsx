@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Image from '@components/Image';
 import { ImageNameEnum } from '@enums/imageNameEnum';
+import { RoutesEnum } from '@enums/routesEnum';
 import { SectionInterface } from '@pages/dashboard/interfaces';
 import { exportTextFile } from '@utils/exportFile';
 import { useAppDispatch } from '@utils/hooks';
@@ -20,7 +21,7 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
 
   const onChangeHandler = () => {
     dispatch(setNewSection(item));
-    navigate('/create');
+    navigate(RoutesEnum.Create);
   };
 
   const onExportHandler = () => {

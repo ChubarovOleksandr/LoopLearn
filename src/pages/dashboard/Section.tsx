@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Image from '@components/Image';
 import { ImageNameEnum } from '@enums/imageNameEnum';
+import { RoutesEnum } from '@enums/routesEnum';
 import { SectionInterface } from '@pages/dashboard/interfaces';
 import SectionOptions from '@pages/dashboard/SectionOptions';
 import { useAppSelector } from '@utils/hooks';
@@ -26,7 +27,7 @@ const Section = ({ item }: Props) => {
 
   const onPlayHandler = () => {
     dispatch(setOriginSection(item));
-    navigate('quiz/' + selectedMode);
+    navigate(`${RoutesEnum.Quiz}/${selectedMode}`);
   };
 
   useEffect(() => {

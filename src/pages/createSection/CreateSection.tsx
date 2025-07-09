@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
+import { RoutesEnum } from '@enums/routesEnum';
 import CreateSectionForm from '@pages/createSection/CreateSectionForm';
 import QuestionList from '@pages/createSection/QuestionList';
 import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces';
@@ -24,7 +25,7 @@ const CreateSection = () => {
     } else {
       dispatch(updateSection(section));
     }
-    navigate('/');
+    navigate(RoutesEnum.Home);
   };
 
   return (
