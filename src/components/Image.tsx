@@ -24,8 +24,9 @@ const Image = ({ name, alt, className, isReverse = false }: ImageProps) => {
 
   const iShowingBlackIcons = isReverse ? theme === ThemeEnum.dark : theme !== ThemeEnum.dark;
   const themePrefix = iShowingBlackIcons ? 'black' : 'white';
-
-  return <img src={`src/assets/img/${themePrefix}-${name}.png`} alt={alt} className={className} />;
+  return (
+    <img src={`../../assets/img/${themePrefix}-${name}.png`} alt={alt} className={className} />
+  );
 };
 
 export default Image;
