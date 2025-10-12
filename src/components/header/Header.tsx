@@ -1,9 +1,7 @@
 import { useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import blackCubeIcon from '../../assets/img/black-cube.png';
-import whiteCubeIcon from '../../assets/img/white-cube.png';
 import { useAppSelector } from '../../utils/hooks';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
 import ImportButton from './ImportButton';
 import '../../scss/pages/Header.scss';
 
@@ -24,14 +22,7 @@ const Header = () => {
     <header className="header">
       <div className="wrapper">
         <NavLink to="/">
-          <img
-            src={srcThemeSwapper({
-              iconForDarkTheme: whiteCubeIcon,
-              iconForWhiteTheme: blackCubeIcon,
-            })}
-            alt="logo"
-            className="header-logo"
-          />
+          <img src={blackCubeIcon} alt="logo" className="header-logo" />
         </NavLink>
         {!isSpecialPage ? (
           <div className="headers__buttons">
