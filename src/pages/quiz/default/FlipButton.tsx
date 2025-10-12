@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { changeFlipped, changeIsChecking } from '../../../redux/slice/quizSlice';
+
+import { changeFlipped, changeIsChecking } from 'src/redux/slice/quizSlice';
 
 interface Props {
   text: string;

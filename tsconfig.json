@@ -1,37 +1,61 @@
 {
-   "compilerOptions": {
-      "target": "ESNext",
-      "useDefineForClassFields": true,
-      "lib": [
-         "DOM",
-         "DOM.Iterable",
-         "ESNext"
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/declarations.d.ts"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
       ],
-      "allowJs": false,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "noFallthroughCasesInSwitch": true,
-      "module": "ESNext",
-      "moduleResolution": "Node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "noEmit": true,
-      "jsx": "react-jsx",
-      "typeRoots": [
-         "./node_modules/@types",
-         "./src/declarations.d.ts"
+      "@enums/*": [
+        "src/enums/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@providers/*": [
+        "src/providers/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
       ]
-   },
-   "include": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "src/**/*",
-      "src/declarations.d.ts"
-   ],
-   "exclude": [
-      "node_modules"
-   ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*",
+    "src/declarations.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

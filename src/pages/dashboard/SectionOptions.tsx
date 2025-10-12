@@ -1,16 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import blackEditIcon from '../../assets/img/black-edit.png';
-import blackExportIcon from '../../assets/img/black-export.png';
-import blackTrashIcon from '../../assets/img/black-trash-bin.png';
-import whiteEditIcon from '../../assets/img/white-edit.png';
-import whiteExportIcon from '../../assets/img/white-export.png';
-import whiteTrashIcon from '../../assets/img/white-trash-bin.png';
-import { removeDoneSection, setNewSection } from '../../redux/slice/sectionsSlice';
-import { exportTextFile } from '../../utils/exportFile';
-import { useAppDispatch } from '../../utils/hooks';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
-import { SectionInterface } from './interfaces';
+
+import Image from '@components/Image';
+import { ImageNameEnum } from '@enums/imageNameEnum';
+import { RoutesEnum } from '@enums/routesEnum';
+import { SectionInterface } from '@pages/dashboard/interfaces';
+import { exportTextFile } from '@utils/exportFile';
+import { useAppDispatch } from '@utils/hooks';
+
+import { removeDoneSection, setNewSection } from 'src/redux/slice/sectionsSlice';
 
 interface PropsInterface {
   item: SectionInterface;
@@ -23,7 +21,7 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
 
   const onChangeHandler = () => {
     dispatch(setNewSection(item));
-    navigate('/create');
+    navigate(RoutesEnum.Create);
   };
 
   const onExportHandler = () => {
@@ -50,33 +48,15 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
   return (
     <div className="options-body">
       <button className="change" onClick={onChangeHandler}>
-        <img
-          src={srcThemeSwapper({
-            iconForWhiteTheme: blackEditIcon,
-            iconForDarkTheme: whiteEditIcon,
-          })}
-          alt="Edit"
-        />
+        <Image name={ImageNameEnum.Edit} alt={'Редактировать'} />
         <span>Редактировать</span>
       </button>
       <button className="export" onClick={onExportHandler}>
-        <img
-          src={srcThemeSwapper({
-            iconForDarkTheme: whiteExportIcon,
-            iconForWhiteTheme: blackExportIcon,
-          })}
-          alt="Export"
-        />
+        <Image name={ImageNameEnum.Export} alt={'Експортировать'} />
         <span>Экспортировать</span>
       </button>
       <button className="remove" onClick={onRemoveHandler}>
-        <img
-          src={srcThemeSwapper({
-            iconForWhiteTheme: blackTrashIcon,
-            iconForDarkTheme: whiteTrashIcon,
-          })}
-          alt="Delete"
-        />
+        <Image name={ImageNameEnum.Bin} alt={'Удалить'} />
         <span>Удалить</span>
       </button>
     </div>

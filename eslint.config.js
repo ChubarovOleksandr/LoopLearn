@@ -1,10 +1,10 @@
 import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 
 export default [
@@ -25,10 +25,12 @@ export default [
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'react-refresh': reactRefreshPlugin,
-      import: importPlugin,
       '@typescript-eslint': tseslint,
+      'simple-import-sort': simpleImportSort,
     },
-    settings: { react: { version: 'detect' } },
+    settings: {
+      react: { version: 'detect' },
+    },
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
@@ -47,35 +49,31 @@ export default [
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
 
-      'import/order': [
+      'sort-imports': 'off',
+      'simple-import-sort/imports': [
         'error',
         {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
-          pathGroups: [
-            {
-              pattern: 'react',
-              group: 'builtin',
-              position: 'before',
-            },
-            {
-              pattern: '@/**',
-              group: 'internal',
-            },
-            {
-              pattern: '*.{css,scss,sass,less}',
-              group: 'index',
-              position: 'after',
-            },
+          groups: [
+            ['^node:'], // Node.js builtins
+            ['^\\u0000'], // Side effect imports
+            ['^@?\\w'], // External packages (включая scoped @packages)
+            [
+              '^@components/',
+              '^@enums/',
+              '^@context/',
+              '^@layouts/',
+              '^@pages/',
+              '^@providers/',
+              '^@utils/',
+            ],
+            ['^src/'], // Internal imports без алиасов
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'], // Родительские импорты
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'], // Сиблинг импорты
+            ['^.+\\.s?css$'], // Стили
           ],
-          pathGroupsExcludedImportTypes: ['react'],
-          'newlines-between': 'never',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
         },
       ],
-      'sort-imports': 'off',
+      'simple-import-sort/exports': 'error',
     },
   },
 ];

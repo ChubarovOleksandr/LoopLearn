@@ -1,11 +1,13 @@
 // import Options from "./Options";
 import React, { useEffect } from 'react';
-import { useAppSelector } from '../../utils/hooks';
-import { setDataToLS } from '../../utils/LS';
-import { SectionInterface } from './interfaces';
-import Section from './Section';
-import SelectMode from './SelectMode';
-import { ThemeToggleButton } from './ThemeToggleButton';
+
+import { SectionInterface } from '@pages/dashboard/interfaces';
+import Section from '@pages/dashboard/Section';
+import SelectMode from '@pages/dashboard/SelectMode';
+import { ThemeToggleButton } from '@pages/dashboard/ThemeToggleButton';
+import { useAppSelector } from '@utils/hooks';
+import { setDataToLS } from '@utils/LS';
+
 import '../../scss/pages/Dashboard.scss';
 
 const Dashboard: React.FC = () => {

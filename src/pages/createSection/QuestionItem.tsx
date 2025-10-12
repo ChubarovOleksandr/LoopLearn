@@ -1,16 +1,17 @@
 import autosize from 'autosize';
 import { useEffect, useRef, useState } from 'react';
+
+import Image from '@components/Image';
+import { ImageNameEnum } from '@enums/imageNameEnum';
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+import { useAppDispatch } from '@utils/hooks';
+
 import {
   changeQuestion,
   removeAnswer,
   removeQuestion,
   setAnswer,
-} from '../../redux/slice/sectionsSlice';
-import whiteArrowIcon from '../../assets/img/white-enter-arrow.png';
-import blackArrowIcon from '../../assets/img/black-enter-arrow.png';
-import { useAppDispatch } from '../../utils/hooks';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
-import { QuestionInterface } from '../dashboard/interfaces';
+} from 'src/redux/slice/sectionsSlice';
 
 interface Props {
   item: QuestionInterface;
@@ -45,7 +46,7 @@ const QuestionItem = ({ item, isAnswerShow }: Props) => {
   useEffect(() => {
     if (questionRef.current) autosize(questionRef.current);
     if (answerRef.current) autosize(answerRef.current);
-  }, [questionRef.current, answerRef.current]);
+  }, []);
 
   return (
     <li>
@@ -58,13 +59,7 @@ const QuestionItem = ({ item, isAnswerShow }: Props) => {
         />
         {item.answer === undefined && !isAnswerVisible && (
           <button onClick={() => setIsAnswerVisible(true)} className="question__add-answer">
-            <img
-              src={srcThemeSwapper({
-                iconForWhiteTheme: blackArrowIcon,
-                iconForDarkTheme: whiteArrowIcon,
-              })}
-              alt="Добавить ответ"
-            />
+            <Image name={ImageNameEnum.EnterArrow} alt={'Добавить ответ'} />
           </button>
         )}
         <button onClick={onRemoveQuestion} className="question__remove">

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
-import { getTheme } from '../utils/getTheme';
-import { setDataToLS } from '../utils/LS';
+
+import { ThemeContext } from '@context/ThemeContext';
+import { getTheme } from '@utils/getTheme';
+import { setDataToLS } from '@utils/LS';
 
 interface ThemeProviderProps {
   children: React.ReactNode;

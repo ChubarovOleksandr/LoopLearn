@@ -1,6 +1,13 @@
-import { useDispatch } from "react-redux";
-import { addFailedQuestion, changeFlipped, changeIsChecking, leftQuestion } from "../../../redux/slice/quizSlice";
-import { QuestionInterface } from '../../dashboard/interfaces';
+import { useDispatch } from 'react-redux';
+
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+
+import {
+  addFailedQuestion,
+  changeFlipped,
+  changeIsChecking,
+  leftQuestion,
+} from 'src/redux/slice/quizSlice';
 
 interface Props {
   text: string;
@@ -16,7 +23,7 @@ const QuestionFailed = ({ text, question }: Props) => {
       dispatch(changeIsChecking(false));
       dispatch(leftQuestion());
       dispatch(addFailedQuestion(question));
-      }, 200);
+    }, 200);
   };
 
   return (

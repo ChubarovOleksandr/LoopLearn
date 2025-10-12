@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { QuestionInterface, SectionInterface } from '../../pages/dashboard/interfaces';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces';
 
 interface quizState {
   originSection: SectionInterface | null;
   modifiedSection: SectionInterface | null;
   failedQuestion: QuestionInterface[];
-  totalCounts: number,
+  totalCounts: number;
   complete: boolean;
   flipped: boolean;
   activeIndex: number;
@@ -24,7 +25,7 @@ const initialState: quizState = {
 };
 
 export const quizSlice = createSlice({
-  name: "quizSlice",
+  name: 'quizSlice',
   initialState,
   reducers: {
     changeIsChecking(state, action) {
@@ -44,7 +45,7 @@ export const quizSlice = createSlice({
     removePassedQuestion(state, action: PayloadAction<{ id: number }>) {
       if (state.modifiedSection && state.modifiedSection.questions.length - 1 > 0) {
         state.modifiedSection.questions = state.modifiedSection.questions.filter(
-          (question) => question.id !== action.payload.id
+          question => question.id !== action.payload.id,
         );
       } else {
         state.complete = true;
@@ -59,7 +60,7 @@ export const quizSlice = createSlice({
       }
     },
     addFailedQuestion(state, action: PayloadAction<QuestionInterface>) {
-      if (!state.failedQuestion.some((question) => question.id === action.payload.id)) {
+      if (!state.failedQuestion.some(question => question.id === action.payload.id)) {
         state.failedQuestion.push(action.payload);
       }
     },
@@ -74,7 +75,7 @@ export const quizSlice = createSlice({
       state.flipped = false;
       state.activeIndex = 1;
       state.isChecking = false;
-    }
+    },
   },
 });
 
@@ -87,5 +88,5 @@ export const {
   changeFlipped,
   changeIsChecking,
   setTotalCounts,
-  resetState
+  resetState,
 } = quizSlice.actions;

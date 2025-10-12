@@ -1,5 +1,6 @@
-import CreateSectionName from './CreateSectionName';
-import CreateSectionQuestion from './CreateSectionQuestion';
+import CreateSectionName from '@pages/createSection/CreateSectionName';
+import CreateSectionQuestion from '@pages/createSection/CreateSectionQuestion';
+
 import '../../scss/components/Form.scss';
 
 const CreateSectionForm = () => {

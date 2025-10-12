@@ -1,6 +1,6 @@
-import { useAppSelector } from '../../utils/hooks';
-import { QuestionInterface } from '../dashboard/interfaces';
-import QuestionItem from './QuestionItem';
+import QuestionItem from '@pages/createSection/QuestionItem';
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+import { useAppSelector } from '@utils/hooks';
 
 const QuestionList = () => {
   const questions: QuestionInterface[] = useAppSelector(

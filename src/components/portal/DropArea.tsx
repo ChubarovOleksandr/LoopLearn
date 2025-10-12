@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import blackCloseIcon from '../../assets/img/black-close.png';
-import whiteCloseIcon from '../../assets/img/white-close.png';
-import { QuestionInterface } from '../../pages/dashboard/interfaces';
-import { saveSection } from '../../redux/slice/sectionsSlice';
-import { useAppDispatch } from '../../utils/hooks';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
+
+import Image from '@components/Image';
+import { ImageNameEnum } from '@enums/imageNameEnum';
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+import { useAppDispatch } from '@utils/hooks';
+
+import { saveSection } from 'src/redux/slice/sectionsSlice';
+
 import '../../scss/components/DropArea.scss';
 
 interface DropAreaProps {
@@ -120,13 +122,7 @@ const DropArea = ({ onClose }: DropAreaProps) => {
         onDragStart={e => dragStartHandler(e)}
       >
         <button className="close" onClick={() => onClose(false)}>
-          <img
-            src={srcThemeSwapper({
-              iconForDarkTheme: whiteCloseIcon,
-              iconForWhiteTheme: blackCloseIcon,
-            })}
-            alt="Close"
-          />
+          <Image name={ImageNameEnum.Close} alt={'Close'} />
         </button>
         {drag ? (
           <span>Отпустите, чтобы файл загрузился</span>

@@ -1,9 +1,11 @@
 import autosize from 'autosize';
 import { useEffect, useRef } from 'react';
-import { addQuestion, toggleShowingAnswerByDefault } from '../../redux/slice/sectionsSlice';
-import { useAppDispatch } from '../../utils/hooks';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux';
+
+import { useAppDispatch } from '@utils/hooks';
+
+import { RootState } from 'src/redux';
+import { addQuestion, toggleShowingAnswerByDefault } from 'src/redux/slice/sectionsSlice';
 
 const CreateSectionQuestion = () => {
   const dispatch = useAppDispatch();
@@ -32,7 +34,7 @@ const CreateSectionQuestion = () => {
     if (textareaRef.current) {
       autosize(textareaRef.current);
     }
-  }, [textareaRef.current]);
+  }, []);
 
   return (
     <div className="form__part">

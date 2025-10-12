@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { globalSlice } from './slice/globalSlice';
 import { quizSlice } from './slice/quizSlice';
 import { sectionSlice } from './slice/sectionsSlice';

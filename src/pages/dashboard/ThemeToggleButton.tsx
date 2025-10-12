@@ -1,7 +1,9 @@
 import { useContext } from 'react';
+
+import { ThemeContext, ThemeEnum } from '@context/ThemeContext';
+
 import moonIcon from '../../assets/img/moon.png';
 import sunIcon from '../../assets/img/sun.png';
-import { ThemeContext, ThemeEnum } from '../../context/ThemeContext';
 
 export const ThemeToggleButton = () => {
   const { theme, setTheme } = useContext(ThemeContext);

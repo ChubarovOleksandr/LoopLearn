@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { saveSection, updateSection } from '../../redux/slice/sectionsSlice';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
-import { isNotEmptyArray } from '../../utils/isData';
-import { QuestionInterface, SectionInterface } from '../dashboard/interfaces';
-import CreateSectionForm from './CreateSectionForm';
-import QuestionList from './QuestionList';
+
+import { RoutesEnum } from '@enums/routesEnum';
+import CreateSectionForm from '@pages/createSection/CreateSectionForm';
+import QuestionList from '@pages/createSection/QuestionList';
+import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces';
+import { useAppDispatch, useAppSelector } from '@utils/hooks';
+import { isNotEmptyArray } from '@utils/isData';
+
+import { saveSection, updateSection } from 'src/redux/slice/sectionsSlice';
+
 import '../../scss/pages/CreateSection.scss';
 
 const CreateSection = () => {
@@ -21,7 +25,7 @@ const CreateSection = () => {
     } else {
       dispatch(updateSection(section));
     }
-    navigate('/');
+    navigate(RoutesEnum.Home);
   };
 
   return (

@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import blackDotsIcon from '../../assets/img/black-dots.png';
-import blackPlayIcon from '../../assets/img/black-play.png';
-import whiteDotsIcon from '../../assets/img/white-dots.png';
-import whitePlayIcon from '../../assets/img/white-play.png';
-import { setOriginSection } from '../../redux/slice/quizSlice';
-import { useAppSelector } from '../../utils/hooks';
-import { srcThemeSwapper } from '../../utils/srcThemeSwapper';
-import { SectionInterface } from './interfaces';
-import SectionOptions from './SectionOptions';
+
+import Image from '@components/Image';
+import { ImageNameEnum } from '@enums/imageNameEnum';
+import { RoutesEnum } from '@enums/routesEnum';
+import { SectionInterface } from '@pages/dashboard/interfaces';
+import SectionOptions from '@pages/dashboard/SectionOptions';
+import { useAppSelector } from '@utils/hooks';
+
+import { setOriginSection } from 'src/redux/slice/quizSlice';
+
 import '../../scss/pages/Dashboard.scss';
 
 interface Props {
@@ -26,7 +27,7 @@ const Section = ({ item }: Props) => {
 
   const onPlayHandler = () => {
     dispatch(setOriginSection(item));
-    navigate('quiz/' + selectedMode);
+    navigate(`${RoutesEnum.Quiz}/${selectedMode}`);
   };
 
   useEffect(() => {
@@ -50,13 +51,7 @@ const Section = ({ item }: Props) => {
           className={isOptionsVisible ? 'visible options' : 'options'}
           onClick={() => setIsOptionsVisible(!isOptionsVisible)}
         >
-          <img
-            src={srcThemeSwapper({
-              iconForDarkTheme: blackDotsIcon,
-              iconForWhiteTheme: whiteDotsIcon,
-            })}
-            alt="other-functions"
-          />
+          <Image name={ImageNameEnum.Dots} alt={'Другие функции'} isReverse />
         </button>
         {isOptionsVisible && (
           <SectionOptions item={item} setIsOptionsVisible={setIsOptionsVisible} />
@@ -71,13 +66,7 @@ const Section = ({ item }: Props) => {
         </ul>
       </div>
       <button onClick={() => onPlayHandler()} className="play">
-        <img
-          src={srcThemeSwapper({
-            iconForDarkTheme: whitePlayIcon,
-            iconForWhiteTheme: blackPlayIcon,
-          })}
-          alt="play"
-        />
+        <Image name={ImageNameEnum.Play} alt={'Начать'} />
       </button>
     </div>
   );

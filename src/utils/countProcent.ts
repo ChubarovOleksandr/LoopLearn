@@ -1,5 +1,6 @@
 import React from 'react';
-import { QuestionInterface } from '../pages/dashboard/interfaces';
+
+import { QuestionInterface } from '@pages/dashboard/interfaces';
 
 interface CountPercentPropsInterface {
   totalCounts: number;

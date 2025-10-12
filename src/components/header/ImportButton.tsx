@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import DropArea from '../portal/DropArea';
+
+import DropArea from '@components/portal/DropArea';
 
 const ImportButton = () => {
   const [showDropArea, setShowDropArea] = useState(false);

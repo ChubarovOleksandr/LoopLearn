@@ -1,6 +1,6 @@
-import { QuestionInterface } from '../../dashboard/interfaces';
-import QuestionFailed from './QuestionFailed';
-import QuestionPassed from './QuestionPassed';
+import { QuestionInterface } from '@pages/dashboard/interfaces';
+import QuestionFailed from '@pages/quiz/default/QuestionFailed';
+import QuestionPassed from '@pages/quiz/default/QuestionPassed';
 
 interface Props {
   question: QuestionInterface;

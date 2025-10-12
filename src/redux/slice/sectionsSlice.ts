@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { QuestionInterface, SectionInterface } from '../../pages/dashboard/interfaces';
-import { getDataFromLS } from '../../utils/LS';
+
+import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces';
+import { getDataFromLS } from '@utils/LS';
 
 const doneSections = getDataFromLS('sections');
 

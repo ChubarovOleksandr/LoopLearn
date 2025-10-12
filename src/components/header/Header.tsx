@@ -1,8 +1,11 @@
 import { useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import blackCubeIcon from '../../assets/img/black-cube.png';
-import { useAppSelector } from '../../utils/hooks';
-import ImportButton from './ImportButton';
+
+import ImportButton from '@components/header/ImportButton';
+import Image from '@components/Image';
+import { ImageNameEnum } from '@enums/imageNameEnum';
+import { useAppSelector } from '@utils/hooks';
+
 import '../../scss/pages/Header.scss';
 
 const Header = () => {
@@ -22,7 +25,7 @@ const Header = () => {
     <header className="header">
       <div className="wrapper">
         <NavLink to="/">
-          <img src={blackCubeIcon} alt="logo" className="header-logo" />
+          <Image name={ImageNameEnum.Cube} alt={'logo'} className={'header-logo'} />
         </NavLink>
         {!isSpecialPage ? (
           <div className="headers__buttons">
