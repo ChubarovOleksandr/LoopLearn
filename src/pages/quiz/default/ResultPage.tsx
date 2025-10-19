@@ -16,10 +16,16 @@ const ResultPage = () => {
 
   const [currVal, setCurrVal] = useState(0);
 
+  const endQuiz = () => {
+    dispatch(resetState());
+  };
+
   const onRestart = async () => {
     const item = originSection;
-    dispatch(resetState());
+
+    endQuiz();
     dispatch(setOriginSection(item));
+
     navigate(`/${RoutesEnum.Quiz}/${selectedMode}`);
   };
 
@@ -32,7 +38,9 @@ const ResultPage = () => {
       <div className="container">
         <div className="question">Ваш успех {currVal} %</div>
         <div className="buttons">
-          <NavLink to={RoutesEnum.Home}>Вернуться</NavLink>
+          <NavLink onClick={endQuiz} to={RoutesEnum.Home}>
+            Вернуться
+          </NavLink>
           <button onClick={onRestart}>Пройти заново</button>
         </div>
       </div>
