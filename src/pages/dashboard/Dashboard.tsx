@@ -1,11 +1,12 @@
-// import Options from "./Options";
 import React, { useEffect } from 'react';
 
+import { LsKeysEnum } from '@enums/localStorageKeys';
 import { SectionInterface } from '@pages/dashboard/interfaces';
 import Section from '@pages/dashboard/Section';
 import SelectMode from '@pages/dashboard/SelectMode';
 import { ThemeToggleButton } from '@pages/dashboard/ThemeToggleButton';
 import { useAppSelector } from '@utils/hooks';
+import { isNotEmptyArray } from '@utils/isData';
 import { setDataToLS } from '@utils/LS';
 
 import '../../scss/pages/Dashboard.scss';
@@ -14,19 +15,18 @@ const Dashboard: React.FC = () => {
   const sections: SectionInterface[] = useAppSelector(state => state.section.doneSections);
 
   useEffect(() => {
-    setDataToLS<SectionInterface[]>('sections', sections);
+    setDataToLS<SectionInterface[]>(LsKeysEnum.Sections, sections);
   }, [sections]);
 
   return (
     <main>
       <div className="wrapper">
-        {/* <Options /> */}
         <SelectMode />
-        {sections.length > 0 ? (
+        {isNotEmptyArray(sections) ? (
           <div className="sections">
-            {sections.map(item => {
-              return <Section key={item.id} item={item} />;
-            })}
+            {sections.map(item => (
+              <Section key={item.id} item={item} />
+            ))}
           </div>
         ) : (
           <h1>LoopLearn</h1>

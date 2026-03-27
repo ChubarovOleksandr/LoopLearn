@@ -1,7 +1,6 @@
-import { useContext } from 'react';
-
 import { ImageNameEnum } from '@enums/imageNameEnum';
-import { ThemeContext, ThemeEnum } from '@context/ThemeContext';
+import { ThemeEnum } from '@providers/themeProvider/enum';
+import { useTheme } from '@providers/themeProvider/ThemeProvider';
 
 interface ImageProps {
   name: ImageNameEnum;
@@ -20,9 +19,11 @@ interface ImageProps {
  */
 
 const Image = ({ name, alt, className, isReverse = false }: ImageProps) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
-  const iShowingBlackIcons = isReverse ? theme === ThemeEnum.dark : theme !== ThemeEnum.dark;
+  // TODO CHANGE ON LUCIDE ICONS
+
+  const iShowingBlackIcons = isReverse ? theme === ThemeEnum.Dark : theme !== ThemeEnum.Dark;
   const themePrefix = iShowingBlackIcons ? 'black' : 'white';
   return <img src={`/assets/img/${themePrefix}-${name}.png`} alt={alt} className={className} />;
 };
