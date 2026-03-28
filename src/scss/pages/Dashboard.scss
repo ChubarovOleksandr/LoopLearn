@@ -53,7 +53,7 @@ main {
       background: var(--bg-secondary-color);
       border-radius: 15px;
       z-index: 1;
-      transition: all .4s;
+      transition: all 0.4s;
     }
 
     button {
@@ -62,7 +62,7 @@ main {
       font-size: 18px;
       z-index: 5;
       padding: 10px 15px;
-      transition: all .3s;
+      transition: all 0.3s;
       color: var(--text-primary-color);
     }
 
@@ -106,11 +106,6 @@ main {
       &.visible {
         opacity: 1;
       }
-
-      img {
-        width: 24px;
-        height: 24px;
-      }
     }
 
     .options-body {
@@ -129,33 +124,18 @@ main {
       button {
         border-radius: 10px;
         min-width: 160px;
-        width: 200px;
+        width: 180px;
         display: flex;
         justify-content: flex-start;
         border: 1px solid var(--bg-primary-color);
         align-items: center;
-        padding: 15px 5px;
+        padding: 10px;
+        gap: 15px;
         background: none;
         font-family: $Montserrat;
         font-weight: 400;
-        font-size: 14px;
-
-        span {
-          color: var(--text-primary-color);
-          text-align: center;
-          width: 100%;
-        }
-
-        img {
-          margin: 0 9px;
-          width: 22px;
-          height: 22px;
-        }
-
-        &:hover {
-          border: 1px solid var(--border-primary-color);
-          transition: all 0.4s;
-        }
+        font-size: 13px;
+        color: var(--bg-secondary-color);
       }
     }
 
@@ -244,25 +224,15 @@ main {
 }
 
 .change-theme-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  right: 0px;
   width: 40px;
   height: 40px;
-  background: none;
   border-radius: 100px;
-
-  &.dark {
-    background: #000;
-    border: 2px solid #fff;
-  }
-
-  &.light {
-    border: 2px solid #000;
-  }
-
-  img {
-    width: 26px;
-    height: 26px;
-  }
+  background: var(--bg-primary-color);
+  border: 2px solid var(--border-primary-color);
 }

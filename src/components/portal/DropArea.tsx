@@ -1,8 +1,8 @@
+import { X } from 'lucide-react';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Image from '@components/Image';
-import { ImageNameEnum } from '@enums/imageNameEnum';
+import { Icon } from '@components/Icon';
 import { QuestionInterface } from '@pages/dashboard/interfaces';
 import { useAppDispatch } from '@utils/hooks';
 
@@ -122,7 +122,7 @@ const DropArea = ({ onClose }: DropAreaProps) => {
         onDragStart={e => dragStartHandler(e)}
       >
         <button className="close" onClick={() => onClose(false)}>
-          <Image name={ImageNameEnum.Close} alt={'Close'} />
+          <Icon icon={X} />
         </button>
         {drag ? (
           <span>Отпустите, чтобы файл загрузился</span>

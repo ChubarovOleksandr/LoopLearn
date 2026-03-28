@@ -1,8 +1,9 @@
+import { Moon, Sun } from 'lucide-react';
+
+import { Icon } from '@components/Icon';
 import { ThemeEnum } from '@providers/themeProvider/enum';
 import { useTheme } from '@providers/themeProvider/ThemeProvider';
-
-import moonIcon from '../../assets/img/moon.png';
-import sunIcon from '../../assets/img/sun.png';
+import { isThemeLight } from '@providers/themeProvider/utils';
 
 export const ThemeToggleButton = () => {
   const { theme, setTheme } = useTheme();
@@ -11,10 +12,9 @@ export const ThemeToggleButton = () => {
     <button
       className={`change-theme-button ${theme}`}
       title="Поменять тему"
-      onClick={() => setTheme(theme === ThemeEnum.Light ? ThemeEnum.Dark : ThemeEnum.Light)}
+      onClick={() => setTheme(isThemeLight(theme) ? ThemeEnum.Dark : ThemeEnum.Light)}
     >
-      {theme === ThemeEnum.Light && <img src={sunIcon} alt="Light theme" />}
-      {theme === ThemeEnum.Dark && <img src={moonIcon} alt="Dark theme" />}
+      {isThemeLight(theme) ? <Icon icon={Sun} /> : <Icon icon={Moon} />}
     </button>
   );
 };

@@ -1,9 +1,9 @@
+import { Ellipsis, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Image from '@components/Image';
-import { ImageNameEnum } from '@enums/imageNameEnum';
+import { Icon } from '@components/Icon';
 import { RoutesEnum } from '@enums/routesEnum';
 import { SectionInterface } from '@pages/dashboard/interfaces';
 import SectionOptions from '@pages/dashboard/SectionOptions';
@@ -51,7 +51,7 @@ const Section = ({ item }: Props) => {
           className={isOptionsVisible ? 'visible options' : 'options'}
           onClick={() => setIsOptionsVisible(!isOptionsVisible)}
         >
-          <Image name={ImageNameEnum.Dots} alt={'Другие функции'} isReverse />
+          <Icon icon={Ellipsis} isReversed />
         </button>
         {isOptionsVisible && (
           <SectionOptions item={item} setIsOptionsVisible={setIsOptionsVisible} />
@@ -66,7 +66,7 @@ const Section = ({ item }: Props) => {
         </ul>
       </div>
       <button onClick={() => onPlayHandler()} className="play">
-        <Image name={ImageNameEnum.Play} alt={'Начать'} />
+        <Icon icon={Play} />
       </button>
     </div>
   );

@@ -2,6 +2,11 @@ import { ImageNameEnum } from '@enums/imageNameEnum';
 import { ThemeEnum } from '@providers/themeProvider/enum';
 import { useTheme } from '@providers/themeProvider/ThemeProvider';
 
+enum ImagePrefixEnum {
+  Black = 'black',
+  White = 'white',
+}
+
 interface ImageProps {
   name: ImageNameEnum;
   alt: string;
@@ -23,8 +28,8 @@ const Image = ({ name, alt, className, isReverse = false }: ImageProps) => {
 
   // TODO CHANGE ON LUCIDE ICONS
 
-  const iShowingBlackIcons = isReverse ? theme === ThemeEnum.Dark : theme !== ThemeEnum.Dark;
-  const themePrefix = iShowingBlackIcons ? 'black' : 'white';
+  const iShowingBlackImage = isReverse ? theme === ThemeEnum.Dark : theme !== ThemeEnum.Dark;
+  const themePrefix = iShowingBlackImage ? ImagePrefixEnum.Black : ImagePrefixEnum.White;
   return <img src={`/assets/img/${themePrefix}-${name}.png`} alt={alt} className={className} />;
 };
 

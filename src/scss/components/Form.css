@@ -1,0 +1,179 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-white-grey: #f1f1f1;
+  --color-grey: #dbdbdb;
+  --color-black-grey: #b4b4b4;
+  --color-black-green: #4E994EAE;
+  --color-green: #42C242AE;
+  --color-black-red: #A10F0FAE;
+  --color-red: #FF0000AE;
+  --color-white-orange: #f5edd6;
+}
+
+:root[data-theme=light] {
+  --text-primary-color: var(--color-black);
+  --text-secondary-color: var(--color-white);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-white);
+  --bg-secondary-color: var(--color-black);
+  --bg-accent-color: var(--color-white-grey);
+  --border-primary-color: var(--color-grey);
+  --border-secondary-color: var(--color-white-grey);
+  --boxshadow-primary-color: var(--color-grey);
+  --boxshadow-secondary-color: var(--color-black-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+:root[data-theme=dark] {
+  --text-primary-color: var(--color-white);
+  --text-secondary-color: var(--color-black);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-black);
+  --bg-secondary-color: var(--color-white);
+  --bg-accent-color: var(--color-black-grey);
+  --border-primary-color: var(--color-black-grey);
+  --border-secondary-color: var(--color-black-grey);
+  --boxshadow-primary-color: var(--color-black-grey);
+  --boxshadow-secondary-color: var(--color-white-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0;
+}
+.form .highlighted {
+  position: relative;
+}
+.form .highlighted:before, .form .highlighted:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 30%;
+  border-radius: 5px;
+  transform: translate(0, -50%);
+  background: var(--bg-secondary-color);
+}
+.form .highlighted:before {
+  left: -10%;
+}
+.form .highlighted:after {
+  right: -10%;
+}
+.form .form__part {
+  display: flex;
+  flex-direction: column;
+}
+.form .form__part input[type=text] {
+  color: var(--text-primary-color);
+  padding: 10px 10px 10px 20px;
+  font-size: 20px;
+  border: 1px solid var(--border-primary-color);
+  box-shadow: 0 0 1px var(--boxshadow-secondary-color);
+  background: var(--bg-primary-color);
+  border-radius: 10px;
+  opacity: 0.8;
+  transition: opacity 0.4s;
+  font-family: "Nunito Sans", sans-serif;
+  width: 550px;
+  height: 45px;
+}
+.form .form__part input[type=text]:focus {
+  transition: opacity 0.4s;
+  opacity: 1;
+}
+.form .form__part input[type=checkbox] {
+  opacity: 0;
+  display: none;
+  z-index: -1;
+}
+.form .form__part input[type=checkbox]:checked:hover + label {
+  background: var(--success-color);
+}
+.form .form__part input[type=checkbox]:checked + label {
+  background: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+.form .form__part input[type=checkbox]:checked + label:hover {
+  background: var(--success-hover-color);
+  border: 1px solid var(--success-hover-color);
+  transition: all 0.4s;
+}
+.form .form__part input[type=checkbox]:checked + label::before {
+  background-size: 13px 16px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/img/check.png");
+}
+.form .form__part label {
+  cursor: pointer;
+  transition: background 0.2s ease-in;
+  position: relative;
+  height: 45px;
+  width: 45px;
+  border-radius: 5px;
+  border: 1px solid var(--border-primary-color);
+  color: var(--text-accent-color);
+}
+.form .form__part label::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+.form .add-question {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form .add-question textarea {
+  width: 450px;
+  min-height: 45px;
+  max-height: 500px;
+  resize: none;
+  height: auto;
+  overflow-y: hidden;
+  color: var(--text-primary-color);
+  padding: 10px 10px 10px 20px;
+  font-size: 20px;
+  border: 1px solid var(--border-primary-color);
+  box-shadow: 0 0 2px var(--boxshadow-secondary-color);
+  background: var(--bg-primary-color);
+  border-radius: 10px;
+  opacity: 0.8;
+  font-family: "Nunito Sans", sans-serif;
+  transition: opacity 0.4s;
+}
+.form .add-question textarea:focus {
+  transition: opacity 0.4s;
+  opacity: 1;
+}
+.form .add-question button {
+  border-radius: 5px;
+  width: 45px;
+  height: 45px;
+  background: var(--success-color);
+  transition: all 0.4s;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #fff;
+}
+.form .add-question button:hover {
+  background: var(--success-hover-color);
+  transition: all 0.4s;
+}

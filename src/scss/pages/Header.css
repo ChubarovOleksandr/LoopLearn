@@ -1,0 +1,77 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-white-grey: #f1f1f1;
+  --color-grey: #dbdbdb;
+  --color-black-grey: #b4b4b4;
+  --color-black-green: #4E994EAE;
+  --color-green: #42C242AE;
+  --color-black-red: #A10F0FAE;
+  --color-red: #FF0000AE;
+  --color-white-orange: #f5edd6;
+}
+
+:root[data-theme=light] {
+  --text-primary-color: var(--color-black);
+  --text-secondary-color: var(--color-white);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-white);
+  --bg-secondary-color: var(--color-black);
+  --bg-accent-color: var(--color-white-grey);
+  --border-primary-color: var(--color-grey);
+  --border-secondary-color: var(--color-white-grey);
+  --boxshadow-primary-color: var(--color-grey);
+  --boxshadow-secondary-color: var(--color-black-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+:root[data-theme=dark] {
+  --text-primary-color: var(--color-white);
+  --text-secondary-color: var(--color-black);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-black);
+  --bg-secondary-color: var(--color-white);
+  --bg-accent-color: var(--color-black-grey);
+  --border-primary-color: var(--color-black-grey);
+  --border-secondary-color: var(--color-black-grey);
+  --boxshadow-primary-color: var(--color-black-grey);
+  --boxshadow-secondary-color: var(--color-white-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+.header {
+  padding: 20px 0;
+  box-shadow: 0 1px 2px var(--boxshadow-primary-color);
+}
+.header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .wrapper .header-logo {
+  height: 4vw;
+  width: 4vw;
+}
+.header .wrapper .headers__buttons {
+  display: flex;
+  gap: 20px;
+}
+.header .wrapper .headers__buttons .header-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--bg-secondary-color);
+  padding: 20px 25px;
+  color: var(--text-secondary-color);
+  border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  gap: 10px;
+}

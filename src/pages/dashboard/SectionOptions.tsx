@@ -1,8 +1,8 @@
+import { Pencil, Trash2, Upload } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Image from '@components/Image';
-import { ImageNameEnum } from '@enums/imageNameEnum';
+import { Icon } from '@components/Icon';
 import { RoutesEnum } from '@enums/routesEnum';
 import { SectionInterface } from '@pages/dashboard/interfaces';
 import { exportTextFile } from '@utils/exportFile';
@@ -48,16 +48,16 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
   return (
     <div className="options-body">
       <button className="change" onClick={onChangeHandler}>
-        <Image name={ImageNameEnum.Edit} alt={'Редактировать'} />
-        <span>Редактировать</span>
+        <Icon icon={Pencil} size="20px" />
+        Редактировать
       </button>
       <button className="export" onClick={onExportHandler}>
-        <Image name={ImageNameEnum.Export} alt={'Експортировать'} />
-        <span>Экспортировать</span>
+        <Icon icon={Upload} size="20px" />
+        Экспортировать
       </button>
       <button className="remove" onClick={onRemoveHandler}>
-        <Image name={ImageNameEnum.Bin} alt={'Удалить'} />
-        <span>Удалить</span>
+        <Icon icon={Trash2} size="20px" />
+        Удалить
       </button>
     </div>
   );

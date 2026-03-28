@@ -1,8 +1,8 @@
 import autosize from 'autosize';
+import { CornerDownLeft } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-import Image from '@components/Image';
-import { ImageNameEnum } from '@enums/imageNameEnum';
+import { Icon } from '@components/Icon';
 import { QuestionInterface } from '@pages/dashboard/interfaces';
 import { useAppDispatch } from '@utils/hooks';
 
@@ -59,7 +59,7 @@ const QuestionItem = ({ item, isAnswerShow }: Props) => {
         />
         {item.answer === undefined && !isAnswerVisible && (
           <button onClick={() => setIsAnswerVisible(true)} className="question__add-answer">
-            <Image name={ImageNameEnum.EnterArrow} alt={'Добавить ответ'} />
+            <Icon icon={CornerDownLeft} size="18px" />
           </button>
         )}
         <button onClick={onRemoveQuestion} className="question__remove">

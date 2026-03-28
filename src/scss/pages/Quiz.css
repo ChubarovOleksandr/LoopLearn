@@ -1,0 +1,127 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-white-grey: #f1f1f1;
+  --color-grey: #dbdbdb;
+  --color-black-grey: #b4b4b4;
+  --color-black-green: #4E994EAE;
+  --color-green: #42C242AE;
+  --color-black-red: #A10F0FAE;
+  --color-red: #FF0000AE;
+  --color-white-orange: #f5edd6;
+}
+
+:root[data-theme=light] {
+  --text-primary-color: var(--color-black);
+  --text-secondary-color: var(--color-white);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-white);
+  --bg-secondary-color: var(--color-black);
+  --bg-accent-color: var(--color-white-grey);
+  --border-primary-color: var(--color-grey);
+  --border-secondary-color: var(--color-white-grey);
+  --boxshadow-primary-color: var(--color-grey);
+  --boxshadow-secondary-color: var(--color-black-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+:root[data-theme=dark] {
+  --text-primary-color: var(--color-white);
+  --text-secondary-color: var(--color-black);
+  --text-accent-color: var(--color-grey);
+  --bg-primary-color: var(--color-black);
+  --bg-secondary-color: var(--color-white);
+  --bg-accent-color: var(--color-black-grey);
+  --border-primary-color: var(--color-black-grey);
+  --border-secondary-color: var(--color-black-grey);
+  --boxshadow-primary-color: var(--color-black-grey);
+  --boxshadow-secondary-color: var(--color-white-grey);
+  --error-color: var(--color-black-red);
+  --error-hover-color: var(--color-red);
+  --success-color: var(--color-black-green);
+  --success-hover-color: var(--color-green);
+}
+
+main.quiz {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
+main.quiz .container {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  color: var(--text-primary-color);
+}
+main.quiz .container .title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  max-height: 1200px;
+  opacity: 0.7;
+}
+main.quiz .container .question {
+  font-family: "Nunito Sans", sans-serif;
+  padding: 50px 0;
+  font-size: 36px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+main.quiz .container .card.flipped {
+  transform: rotateY(180deg);
+}
+main.quiz .container .card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+main.quiz .container .card .card-front,
+main.quiz .container .card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+main.quiz .container .card .card-front {
+  transform: rotateY(0deg);
+}
+main.quiz .container .card .card-back {
+  transform: rotateY(180deg);
+}
+main.quiz .container .buttons:has(a) {
+  display: flex;
+  justify-content: center;
+}
+main.quiz .container .buttons:has(a) button, main.quiz .container .buttons:has(a) a {
+  transition: all 0.3s;
+}
+main.quiz .container .buttons:has(a) button:hover, main.quiz .container .buttons:has(a) a:hover {
+  color: var(--text-accent-color);
+}
+main.quiz .container .buttons button,
+main.quiz .container .buttons a {
+  width: 220px;
+  background: none;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-primary-color);
+  font-size: 18px;
+  padding: 20px 20px;
+  transition: all 0.3s;
+}
+main.quiz .container .buttons .confirm:hover {
+  color: var(--success-hover-color);
+}
+main.quiz .container .buttons .reject:hover {
+  color: var(--error-hover-color);
+}
+main.quiz .container .buttons .check {
+  display: block;
+  margin: 10px auto 0 auto;
+}
+main.quiz .container .buttons .check:hover {
+  opacity: 0.4;
+}
