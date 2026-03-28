@@ -6,7 +6,7 @@ import { Icon } from '@components/Icon';
 import { QuestionInterface } from '@pages/dashboard/interfaces';
 import { useAppDispatch } from '@utils/hooks';
 
-import { saveSection } from 'src/redux/slice/sectionsSlice';
+import { saveSection } from 'src/store/slice/sectionsSlice';
 
 import '../../scss/components/DropArea.scss';
 

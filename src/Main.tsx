@@ -7,7 +7,7 @@ import { ThemeProvider } from '@providers/themeProvider/ThemeProvider';
 
 import App from 'src/App';
 
-import { store } from './redux';
+import { store } from './store';
 
 import './scss/index.scss';
 import './scss/libs/nullstyle.scss';

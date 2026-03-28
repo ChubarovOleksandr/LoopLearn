@@ -20,6 +20,7 @@
     "typeRoots": ["./node_modules/@types", "./src/declarations.d.ts"],
     "baseUrl": ".",
     "paths": {
+      "@store/*": ["src/store/*"],
       "@components/*": ["src/components/*"],
       "@enums/*": ["src/enums/*"],
       "@context/*": ["src/context/*"],

@@ -5,13 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { Icon } from '@components/Icon';
 import { RoutesEnum } from '@enums/routesEnum';
+import SectionOptions from '@pages/dashboard/components/SectionOptions';
 import { SectionInterface } from '@pages/dashboard/interfaces';
-import SectionOptions from '@pages/dashboard/SectionOptions';
+import { setOriginSection } from '@store/slice/quizSlice';
 import { useAppSelector } from '@utils/hooks';
 
-import { setOriginSection } from 'src/redux/slice/quizSlice';
-
-import '../../scss/pages/Dashboard.scss';
+import '../../../scss/pages/Dashboard.scss';
 
 interface Props {
   item: SectionInterface;

@@ -11,7 +11,7 @@ import {
   removeAnswer,
   removeQuestion,
   setAnswer,
-} from 'src/redux/slice/sectionsSlice';
+} from 'src/store/slice/sectionsSlice';
 
 interface Props {
   item: QuestionInterface;

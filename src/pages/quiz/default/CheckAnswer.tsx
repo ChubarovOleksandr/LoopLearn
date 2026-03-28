@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { changeFlipped, changeIsChecking } from 'src/redux/slice/quizSlice';
+import { changeFlipped, changeIsChecking } from '@store/slice/quizSlice';
 
 const CheckAnswer = () => {
   const dispatch = useDispatch();

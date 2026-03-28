@@ -64,6 +64,7 @@ export default [
               '^@layouts/',
               '^@pages/',
               '^@providers/',
+              '^@store/',
               '^@utils/',
             ],
             ['^src/'], // Internal imports без алиасов

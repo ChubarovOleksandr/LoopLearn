@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { RoutesEnum } from '@enums/routesEnum';
+import { resetState, setOriginSection } from '@store/slice/quizSlice';
 import { countPercent } from '@utils/countProcent';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
-
-import { resetState, setOriginSection } from 'src/redux/slice/quizSlice';
 
 const ResultPage = () => {
   const dispatch = useAppDispatch();

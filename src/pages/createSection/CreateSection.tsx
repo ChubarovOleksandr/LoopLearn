@@ -8,7 +8,7 @@ import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { isNotEmptyArray } from '@utils/isData';
 
-import { saveSection, updateSection } from 'src/redux/slice/sectionsSlice';
+import { saveSection, updateSection } from 'src/store/slice/sectionsSlice';
 
 import '../../scss/pages/CreateSection.scss';
 

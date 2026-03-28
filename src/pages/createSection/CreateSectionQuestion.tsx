@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@utils/hooks';
 
-import { RootState } from 'src/redux';
-import { addQuestion, toggleShowingAnswerByDefault } from 'src/redux/slice/sectionsSlice';
+import { RootState } from 'src/store';
+import { addQuestion, toggleShowingAnswerByDefault } from 'src/store/slice/sectionsSlice';
 
 const CreateSectionQuestion = () => {
   const dispatch = useAppDispatch();

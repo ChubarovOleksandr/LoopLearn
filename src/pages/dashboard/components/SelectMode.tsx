@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from 'src/redux';
-import { setSelectedMode } from 'src/redux/slice/globalSlice';
+import { RootState } from '@store/index';
+import { setSelectedMode } from '@store/slice/globalSlice';
 
 const SelectMode = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { QuestionInterface } from '@pages/dashboard/interfaces';
-
-import { changeFlipped, removePassedQuestion } from 'src/redux/slice/quizSlice';
+import { changeFlipped, removePassedQuestion } from '@store/slice/quizSlice';
 
 interface Props {
   text: string;

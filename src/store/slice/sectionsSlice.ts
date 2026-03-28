@@ -1,9 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { LsKeysEnum } from '@enums/localStorageKeys';
 import { QuestionInterface, SectionInterface } from '@pages/dashboard/interfaces';
 import { getDataFromLS } from '@utils/LS';
 
-const doneSections = getDataFromLS('sections');
+import { isArray } from '../../utils/isData';
+
+const doneSections = getDataFromLS(LsKeysEnum.Sections);
 
 interface newSection {
   name: string;
@@ -65,7 +68,12 @@ export const sectionSlice = createSlice({
       });
     },
     saveSection(state, action: PayloadAction<SectionInterface>) {
+      if (!isArray(state.doneSections)) {
+        state.doneSections = [];
+      }
+
       state.doneSections.push(action.payload);
+
       state.newSection = {
         name: '',
         questions: [],

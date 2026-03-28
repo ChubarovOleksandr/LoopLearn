@@ -1,13 +1,12 @@
 import { useDispatch } from 'react-redux';
 
 import { QuestionInterface } from '@pages/dashboard/interfaces';
-
 import {
   addFailedQuestion,
   changeFlipped,
   changeIsChecking,
   leftQuestion,
-} from 'src/redux/slice/quizSlice';
+} from '@store/slice/quizSlice';
 
 interface Props {
   text: string;

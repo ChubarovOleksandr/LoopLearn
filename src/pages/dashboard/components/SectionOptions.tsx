@@ -5,15 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { Icon } from '@components/Icon';
 import { RoutesEnum } from '@enums/routesEnum';
 import { SectionInterface } from '@pages/dashboard/interfaces';
+import { removeDoneSection, setNewSection } from '@store/slice/sectionsSlice';
 import { exportTextFile } from '@utils/exportFile';
 import { useAppDispatch } from '@utils/hooks';
 
-import { removeDoneSection, setNewSection } from 'src/redux/slice/sectionsSlice';
+import { isExist } from '../../../utils/isData';
 
 interface PropsInterface {
   item: SectionInterface;
   setIsOptionsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const iconSize = '20px';
 
 const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
   const dispatch = useAppDispatch();
@@ -26,7 +29,7 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
 
   const onExportHandler = () => {
     const exportDataArrays = item.questions.map(question => {
-      if (question.answer) {
+      if (isExist(question.answer)) {
         return `${question.questionText} - ${question.answer}`;
       }
       return question.questionText;
@@ -38,7 +41,7 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
   };
 
   const onRemoveHandler = () => {
-    if (item.id) {
+    if (isExist(item.id)) {
       dispatch(removeDoneSection(item.id));
       setIsOptionsVisible(false);
       window.location.reload();
@@ -48,15 +51,15 @@ const SectionOptions = ({ item, setIsOptionsVisible }: PropsInterface) => {
   return (
     <div className="options-body">
       <button className="change" onClick={onChangeHandler}>
-        <Icon icon={Pencil} size="20px" />
+        <Icon icon={Pencil} size={iconSize} />
         Редактировать
       </button>
       <button className="export" onClick={onExportHandler}>
-        <Icon icon={Upload} size="20px" />
+        <Icon icon={Upload} size={iconSize} />
         Экспортировать
       </button>
       <button className="remove" onClick={onRemoveHandler}>
-        <Icon icon={Trash2} size="20px" />
+        <Icon icon={Trash2} size={iconSize} />
         Удалить
       </button>
     </div>

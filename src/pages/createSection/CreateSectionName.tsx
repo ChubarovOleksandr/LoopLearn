@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 
-import { setSectionName } from 'src/redux/slice/sectionsSlice';
+import { setSectionName } from 'src/store/slice/sectionsSlice';
 
 const CreateSectionName = () => {
   const dispatch = useAppDispatch();

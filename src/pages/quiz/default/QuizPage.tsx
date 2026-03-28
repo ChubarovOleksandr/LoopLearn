@@ -4,10 +4,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { RoutesEnum } from '@enums/routesEnum';
 import CardBack from '@pages/quiz/default/CardBack';
 import CardFront from '@pages/quiz/default/CardFront';
+import { setTotalCounts } from '@store/slice/quizSlice';
 import { useAppDispatch, useAppSelector } from '@utils/hooks';
 import { isEmptyArray, isExist, isNotEmptyArray } from '@utils/isData';
-
-import { setTotalCounts } from 'src/redux/slice/quizSlice';
 
 import '../../../scss/pages/Quiz.scss';
 
